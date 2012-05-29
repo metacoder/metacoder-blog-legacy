@@ -1,0 +1,12 @@
+<html t:type="layout" title="Edit Entry"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <p>Edit entry ....</p>
+	<t:beanEditForm object="blogEntry" >
+		<p:content>
+	      <t:label for="wurst"/>
+		 <t:textarea t:id="wurst" t:value="blogEntry.content" />
+	    </p:content>
+	</t:beanEditForm>
+</html>

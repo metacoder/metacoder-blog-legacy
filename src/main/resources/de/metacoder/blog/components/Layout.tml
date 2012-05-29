@@ -1,16 +1,5 @@
 <!DOCTYPE html>
-<!--
-
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
-
-Title      : Concrete (modified for Tapestry)
-Version    : 1.0
-Released   : 20080825
-Description: A Web 2.0 design with fluid width suitable for blogs and small websites.
--->
-        <html xmlns="http://www.w3.org/1999/xhtml"
+    <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
     <head>
@@ -53,6 +42,10 @@ Description: A Web 2.0 design with fluid width suitable for blogs and small webs
                             <t:delegate to="sidebar"/>
                         </div>
                     </li>
+                    
+                    <li type="if" test="sidebar == null">
+                    	<h2>Default sidebar title!</h2>
+                    </li>
                 </ul>
             </div>
             <!-- end sidebar -->
@@ -85,4 +78,5 @@ Description: A Web 2.0 design with fluid width suitable for blogs and small webs
         </div>
         <!-- end footer -->
     </body>
+    
 </html>

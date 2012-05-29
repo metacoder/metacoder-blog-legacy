@@ -1,17 +1,29 @@
 package de.metacoder.blog.pages;
 
 import java.util.Date;
-import org.apache.tapestry5.annotations.*;
-import org.apache.tapestry5.ioc.annotations.*;
-import org.apache.tapestry5.corelib.components.*;
+import java.util.List;
+
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.alerts.AlertManager;
+import org.apache.tapestry5.annotations.InjectComponent;
+import org.apache.tapestry5.annotations.Persist;
+import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.corelib.components.Zone;
+import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.ioc.annotations.Symbol;
+
+import de.metacoder.blog.persistence.entities.BlogEntry;
+import de.metacoder.blog.persistence.repositories.BlogEntryRepository;
 
 /**
  * Start page of application blog.
  */
 public class Index
 {
+	
+	@Inject
+	private BlogEntryRepository blogEntryRepository;
+	
     @Property
     @Inject
     @Symbol(SymbolConstants.TAPESTRY_VERSION)
@@ -27,6 +39,14 @@ public class Index
     @Inject
     private AlertManager alertManager;
 
+    @Property
+    private BlogEntry blogEntry;
+    
+    public List<BlogEntry> getBlogEntries(){
+    	return blogEntryRepository.findAll();
+    }
+    
+    
     public Date getCurrentTime()
     {
         return new Date();

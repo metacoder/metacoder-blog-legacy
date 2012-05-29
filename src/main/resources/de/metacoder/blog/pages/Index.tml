@@ -6,6 +6,12 @@
 
     <p>${message:greeting}</p>
 
+
+    <div t:type="loop" source="blogEntries" value="blogEntry" class="blogEntry">
+        <h2>${blogEntry.title} - ${blogEntry.creationDate}</h2>
+        <p>${blogEntry.content}</p>
+    </div>
+
     <p>The current time is: <strong>${currentTime}</strong></p>
 
     <!-- A Zone is a component that can be updated in place, triggered by other components. -->
