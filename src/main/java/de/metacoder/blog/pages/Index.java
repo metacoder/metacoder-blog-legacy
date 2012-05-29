@@ -43,7 +43,7 @@ public class Index
     private BlogEntry blogEntry;
     
     public List<BlogEntry> getBlogEntries(){
-    	return blogEntryRepository.findAll();
+    	return blogEntryRepository.findAllOrderedByCreationDate();
     }
     
     

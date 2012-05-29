@@ -1,7 +1,5 @@
 package de.metacoder.blog.pages;
 
-import org.apache.tapestry5.EventConstants;
-import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
@@ -24,7 +22,7 @@ public class EditEntry {
 	public void onSuccess(){
 		System.out.println("bla: " + blogEntry);
 		blogEntryRepository.save(blogEntry);
-		blogEntry = new BlogEntry();
+		blogEntry = new BlogEntry(); // doesn't work. wait. what?
 	}
 
 	public void onFailure(){

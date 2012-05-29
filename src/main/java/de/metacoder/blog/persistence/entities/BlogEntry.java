@@ -2,6 +2,11 @@ package de.metacoder.blog.persistence.entities;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import org.apache.tapestry5.beaneditor.NonVisual;
 
 /**
@@ -9,6 +14,7 @@ import org.apache.tapestry5.beaneditor.NonVisual;
  * @author Felix Becker <a href="mailto:becker@jubeco.de>becker@jubeco.de</a>
  * 
  */
+@Entity
 public class BlogEntry {
 
 	public BlogEntry(String title, Date creationDate, String content) {
@@ -27,7 +33,8 @@ public class BlogEntry {
 	private String content;
 	
 	
-	
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
 	@NonVisual
 	public Long getId() {
 		return id;
