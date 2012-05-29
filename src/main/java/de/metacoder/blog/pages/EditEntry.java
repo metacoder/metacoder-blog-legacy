@@ -1,5 +1,6 @@
 package de.metacoder.blog.pages;
 
+import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
@@ -17,12 +18,11 @@ public class EditEntry {
 	private BlogEntryRepository blogEntryRepository;
 	
 	@Property
-	private BlogEntry blogEntry = new BlogEntry();
+	private BlogEntry blogEntry;
 
 	public void onSuccess(){
 		System.out.println("bla: " + blogEntry);
 		blogEntryRepository.save(blogEntry);
-		blogEntry = new BlogEntry(); // doesn't work. wait. what?
 	}
 
 	public void onFailure(){

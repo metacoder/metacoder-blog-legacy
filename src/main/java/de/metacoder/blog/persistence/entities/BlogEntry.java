@@ -17,16 +17,6 @@ import org.apache.tapestry5.beaneditor.NonVisual;
 @Entity
 public class BlogEntry {
 
-	public BlogEntry(String title, Date creationDate, String content) {
-		this.title = title;
-		this.creationDate = creationDate;
-		this.content = content;
-	}
-	
-	public BlogEntry(){
-		// for hibernate 
-	}
-	
 	private Long id;
 	private String title;
 	private Date creationDate;
