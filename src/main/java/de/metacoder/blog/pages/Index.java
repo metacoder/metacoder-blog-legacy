@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.annotations.InjectComponent;
+import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Zone;
@@ -52,6 +53,10 @@ public class Index
         return new Date();
     }
 
+    public void onActionFromDelete(Long blogEntryId) {
+    	blogEntryRepository.delete(blogEntryId);
+    }
+    
     void onActionFromIncrement()
     {
         alertManager.info("Increment clicked");

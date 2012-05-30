@@ -7,9 +7,11 @@
     <p>${message:greeting}</p>
 
 
-    <div t:type="loop" source="blogEntries" value="blogEntry" class="blogEntry">
-        <h2>${blogEntry.title} - ${blogEntry.creationDate}</h2>
+    <div t:type="loop" source="blogEntries" value="blogEntry" class="blogEntry" style="border: 1px solid black">
+        <h2>${blogEntry.title} - ${blogEntry.creationDate} (${blogEntry.id})</h2>
         <p>${blogEntry.content}</p>
+        <t:pagelink t:id="edit" page="editEntry" context="blogEntry.id">Editieren</t:pagelink> - 
+        <t:actionlink t:id="delete" context="blogEntry.id">L&ouml;schen</t:actionlink>
     </div>
 
     <p>The current time is: <strong>${currentTime}</strong></p>
