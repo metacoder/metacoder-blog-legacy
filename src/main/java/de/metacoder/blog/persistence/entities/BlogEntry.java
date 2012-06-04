@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 import org.apache.tapestry5.beaneditor.NonVisual;
 
@@ -17,15 +18,18 @@ import org.apache.tapestry5.beaneditor.NonVisual;
 @Entity
 public class BlogEntry {
 
-	private Long id;
-	private String title;
-	private Date creationDate;
-	private String content;
-	
-	
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Id
 	@NonVisual
+	private Long id;
+	private String title;
+	private Date creationDate;
+	
+	@Lob
+	private String content;
+	private String authorName;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -63,6 +67,16 @@ public class BlogEntry {
 		return "BlogEntry [id=" + id + ", title=" + title + ", creationDate="
 				+ creationDate + ", content=" + content + "]";
 	}
+
+	public String getAuthorName() {
+		return authorName;
+	}
+
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
+	}
+	
+	
 	
 	
 }

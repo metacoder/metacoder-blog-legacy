@@ -25,14 +25,6 @@ public class Index
 	@Inject
 	private BlogEntryRepository blogEntryRepository;
 	
-    @Property
-    @Inject
-    @Symbol(SymbolConstants.TAPESTRY_VERSION)
-    private String tapestryVersion;
-
-    @InjectComponent
-    private Zone zone;
-
     @Persist
     @Property
     private int clickCount;
@@ -55,21 +47,5 @@ public class Index
 
     public void onActionFromDelete(Long blogEntryId) {
     	blogEntryRepository.delete(blogEntryId);
-    }
-    
-    void onActionFromIncrement()
-    {
-        alertManager.info("Increment clicked");
-
-        clickCount++;
-    }
-
-    Object onActionFromIncrementAjax()
-    {
-        clickCount++;
-
-        alertManager.info("Increment (via Ajax) clicked");
-
-        return zone;
     }
 }

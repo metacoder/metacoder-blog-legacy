@@ -9,45 +9,46 @@ import org.apache.tapestry5.SymbolConstants;
 /**
  * Layout component for pages of application blog.
  */
-@Import(stylesheet = "context:layout/layout.css")
-public class Layout
-{
-    /**
-     * The page title, for the <title> element and the <h1> element.
-     */
-    @Property
-    @Parameter(required = true, defaultPrefix = BindingConstants.LITERAL)
-    private String title;
+@Import(stylesheet = "context:css/style.css")
+public class Layout {
 
-    @Property
-    private String pageName;
+	@Property
+	@Inject
+	@Symbol(SymbolConstants.TAPESTRY_VERSION)
+	private String tapestryVersion;
 
-    @Property
-    @Parameter(defaultPrefix = BindingConstants.LITERAL)
-    private String sidebarTitle;
+	/**
+	 * The page title, for the <title> element and the <h1>element.
+	 */
+	@Property
+	@Parameter(required = true, defaultPrefix = BindingConstants.LITERAL)
+	private String title;
 
-    @Property
-    @Parameter(defaultPrefix = BindingConstants.LITERAL)
-    private Block sidebar;
+	@Property
+	private String pageName;
 
-    @Inject
-    private ComponentResources resources;
+	@Property
+	@Parameter(defaultPrefix = BindingConstants.LITERAL)
+	private String sidebarTitle;
 
-    @Property
-    @Inject
-    @Symbol(SymbolConstants.APPLICATION_VERSION)
-    private String appVersion;
+	@Property
+	@Parameter(defaultPrefix = BindingConstants.LITERAL)
+	private Block sidebar;
 
+	@Inject
+	private ComponentResources resources;
 
-    public String getClassForPageName()
-    {
-        return resources.getPageName().equalsIgnoreCase(pageName)
-                ? "current_page_item"
-                : null;
-    }
+	@Property
+	@Inject
+	@Symbol(SymbolConstants.APPLICATION_VERSION)
+	private String appVersion;
 
-    public String[] getPageNames()
-    {
-        return new String[]{"Index", "About", "Contact", "EditEntry"};
-    }
+	public String getClassForPageName() {
+		return resources.getPageName().equalsIgnoreCase(pageName) ? "current_page_item"
+				: null;
+	}
+
+	public String[] getPageNames() {
+		return new String[] { "Index", "About", "Contact", "EditEntry" };
+	}
 }
