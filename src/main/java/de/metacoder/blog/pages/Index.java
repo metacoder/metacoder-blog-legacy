@@ -26,7 +26,7 @@ import de.metacoder.blog.persistence.repositories.BlogEntryRepository;
 public class Index
 {
 	
-	private static final int PAGE_SIZE = 10;
+	private static final int PAGE_SIZE = 5;
 	
 	@Inject
 	private BlogEntryRepository blogEntryRepository;

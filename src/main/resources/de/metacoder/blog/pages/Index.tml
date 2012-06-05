@@ -7,27 +7,37 @@
 
 
     <div t:type="loop" source="blogEntries" value="blogEntry" class="post">
-        <h3>${blogEntry.title} (${blogEntry.id})</h3>
+        <h3>${blogEntry.title}</h3>
         <ul class="post_info">
 						<li class="date">Posted by <a href="#">${blogEntry.authorName}</a> on ${blogEntry.creationDate}</li>
 						<li class="comments"><a href="#">comments not available</a></li>
 					</ul>		
         <p><t:outputRaw value="blogEntry.content" /></p>
+        <p t:type="if" test="blogEntry.lastUpdateDate">Letzte aktualisierung: ${blogEntry.lastUpdateDate}</p>
         <p><t:pagelink t:id="edit" page="editEntry" context="blogEntry.id">Editieren</t:pagelink> - 
         <t:actionlink t:id="delete" context="blogEntry.id">L&ouml;schen</t:actionlink></p>
     </div>
-    
-     
-    <p id="paginator">
+
+    <p id="blogPostPaginator">
 	    <t:if test="hasPreviousPage">
 	    	<t:pagelink page="index" context="previousPage">&lt;&lt;</t:pagelink>
+	    	<p:else>
+	    		&lt;&lt;
+	    	</p:else>
 	    </t:if>
 	    
 	    Seite ${nextPage} 
 	    
 	    <t:if test="hasNextPage">
 	    	<t:pagelink page="index" context="nextPage">&gt;&gt;</t:pagelink>
+	    	<p:else>
+	    		&gt;&gt;
+	    	</p:else>
 	    </t:if>
     </p>
+    <!-- TODO jquery document ready -->
+	<script type="text/javascript">
+		SyntaxHighlighter.all()
+	</script>
    
 </html>

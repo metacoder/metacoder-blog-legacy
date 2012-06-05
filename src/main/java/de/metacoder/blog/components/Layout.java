@@ -24,7 +24,8 @@ import org.apache.tapestry5.SymbolConstants;
 					"context:scripts/syntaxhighlight/shBrushCpp.js"
 					},
 		stylesheet = {
-					"context:css/style.css",
+					"context:css/nonzero.css",
+					"context:css/blog.css",
 					"context:css/syntaxhighlight/shCoreEclipse.css"
 					})
 public class Layout {

@@ -314,15 +314,3 @@ input.text {
 	padding: 0em 0em 0.5em 2em;
 	border-left: dotted 1px #E1E1E1;
 }
-
-/* LAYOUT - COLUMNLESS */
-
-/* Primary content */
-#primaryContent_columnless {
-	position: relative;
-}
-
-#columnA_columnless {
-	position: relative;
-	width: 100%;
-}
