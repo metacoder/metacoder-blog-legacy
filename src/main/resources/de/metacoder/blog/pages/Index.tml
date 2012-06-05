@@ -16,4 +16,18 @@
         <p><t:pagelink t:id="edit" page="editEntry" context="blogEntry.id">Editieren</t:pagelink> - 
         <t:actionlink t:id="delete" context="blogEntry.id">L&ouml;schen</t:actionlink></p>
     </div>
+    
+     
+    <p id="paginator">
+	    <t:if test="hasPreviousPage">
+	    	<t:pagelink page="index" context="previousPage">&lt;&lt;</t:pagelink>
+	    </t:if>
+	    
+	    Seite ${nextPage} 
+	    
+	    <t:if test="hasNextPage">
+	    	<t:pagelink page="index" context="nextPage">&gt;&gt;</t:pagelink>
+	    </t:if>
+    </p>
+   
 </html>
