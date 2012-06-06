@@ -16,6 +16,7 @@ import org.apache.tapestry5.services.RequestFilter;
 import org.apache.tapestry5.services.RequestHandler;
 import org.apache.tapestry5.services.Response;
 import org.slf4j.Logger;
+import org.tynamo.security.SecuritySymbols;
 import org.tynamo.shiro.extension.realm.text.ExtendedPropertiesRealm;
 
 /**
@@ -62,6 +63,10 @@ public class AppModule
         // you can extend this list of locales (it's a comma separated series of locale names;
         // the first locale name is the default when there's no reasonable match).
         configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en");
+        
+        /* custom shiro config */
+        configuration.add(SecuritySymbols.LOGIN_URL, "/login");
+        configuration.add(SecuritySymbols.UNAUTHORIZED_URL, "/unauthorized");
     }
 
 
