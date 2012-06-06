@@ -45,6 +45,11 @@
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
+	
+	<!-- <bean id="configuredRealm" class="org.tynamo.shiro.extension.realm.text.ExtendedPropertiesRealm">
+		<constructor-arg value="classpath:shiro-users.properties" />
+	</bean>  -->
+	
 
 	<bean id="configuredDataSource" class="org.apache.commons.dbcp.BasicDataSource"	destroy-method="close">
 		<property name="driverClassName" value="${database.jdbc.driver}" />

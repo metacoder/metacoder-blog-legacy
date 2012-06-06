@@ -21,6 +21,7 @@ import org.springframework.data.domain.Sort.Direction;
 
 import de.metacoder.blog.persistence.entities.BlogEntry;
 import de.metacoder.blog.persistence.repositories.BlogEntryRepository;
+import de.metacoder.blog.security.BlogRoles;
 
 /**
  * Start page of application blog.
@@ -55,7 +56,7 @@ public class Index
         return new Date();
     }
     
-    @RequiresRoles("admin")
+    @RequiresRoles(BlogRoles.ADMIN)
     public void onActionFromDelete(Long blogEntryId) {
     	blogEntryRepository.delete(blogEntryId);
     }
