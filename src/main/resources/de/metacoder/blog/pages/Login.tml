@@ -1,0 +1,13 @@
+<html t:type="layout" title="Login"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <p>Login-Seite...</p>
+    	<t:security.user>
+  			Hello, ${username}
+  			<t:security.loginlink />
+		</t:security.user>
+		<t:security.guest>
+			<t:security.loginform />
+		</t:security.guest>
+</html>

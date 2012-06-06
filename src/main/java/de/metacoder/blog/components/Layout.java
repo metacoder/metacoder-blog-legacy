@@ -1,10 +1,12 @@
 package de.metacoder.blog.components;
 
+import org.apache.shiro.realm.Realm;
 import org.apache.tapestry5.*;
 import org.apache.tapestry5.annotations.*;
 import org.apache.tapestry5.ioc.annotations.*;
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.SymbolConstants;
+import org.tynamo.security.services.SecurityService;
 
 /**
  * Layout component for pages of application blog.
@@ -30,6 +32,9 @@ import org.apache.tapestry5.SymbolConstants;
 					})
 public class Layout {
 
+	@Inject
+	private SecurityService securityService;
+	
 	@Property
 	@Inject
 	@Symbol(SymbolConstants.TAPESTRY_VERSION)
@@ -64,6 +69,10 @@ public class Layout {
 	}
 
 	public String[] getPageNames() {
-		return new String[] { "Index", "About", "Contact", "EditEntry" };
+		return new String[] { "Index", "About", "Contact", "EditEntry", "Unauthorized", "Login" };
+	}
+	
+	public String getUsername(){
+		return securityService.getSubject().getPrincipal().toString();
 	}
 }

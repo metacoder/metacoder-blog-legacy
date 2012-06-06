@@ -3,6 +3,8 @@ package de.metacoder.blog.pages;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.alerts.AlertManager;
 import org.apache.tapestry5.annotations.InjectComponent;
@@ -52,7 +54,8 @@ public class Index
     {
         return new Date();
     }
-
+    
+    @RequiresRoles("admin")
     public void onActionFromDelete(Long blogEntryId) {
     	blogEntryRepository.delete(blogEntryId);
     }
