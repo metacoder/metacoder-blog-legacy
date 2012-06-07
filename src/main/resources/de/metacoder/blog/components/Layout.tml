@@ -49,23 +49,41 @@
             </div>
             <!-- end content -->
             <!-- start sidebar -->
-            	<div id="secondaryContent_2columns">
-		
-			<div id="columnC_2columns">
-                        <h4><span>Framework</span> version</h4>
-
-                        <div class="sidebar-content">
-        <p>
-            You are running Tapestry version <strong>${tapestryVersion}</strong>.
-        </p>
-
-                        </div>
-                        
-                        <h4><span>Zorsti</span> Bellmer </h4>
-                        <div class="sidebar-content">
-                        	Gnihihihi
-                        </div>
-            </div></div>
+			<div id="secondaryContent_2columns">
+			
+				<div id="columnC_2columns">
+					<!--  sidebar content -->
+					<t:if test="sidebar">
+						<t:delegate to="sidebar" />
+						<p:else> <!-- show default sidebar -->
+							<h4>
+								<span>Framework</span>
+								version
+							</h4>
+					
+							<div class="sidebar-content">
+								<p>
+									You are running Tapestry version
+									<strong>${tapestryVersion}</strong>
+									.
+								</p>
+					
+							</div>
+					
+							<h4>
+								<span>Sample</span> Foo
+							</h4>
+							<div class="sidebar-content">
+								<p>
+								abc
+								</p>
+							</div>
+						</p:else>
+					</t:if>
+							
+					<!-- end sidebar content -->
+				</div>
+			</div>
             <!-- end sidebar -->
 		<br class="clear" />
         </div>

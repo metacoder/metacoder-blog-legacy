@@ -10,4 +10,7 @@
 		<t:security.guest>
 			<t:security.loginform />
 		</t:security.guest>
+		
+	<p:sidebar>
+	</p:sidebar>
 </html>

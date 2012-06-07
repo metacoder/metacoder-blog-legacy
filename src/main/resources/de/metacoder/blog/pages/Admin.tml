@@ -1,0 +1,32 @@
+<html t:type="layout" title="Admin"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+
+	<p>Adminseite, uh yeah.</p>
+
+	<t:zone t:id="adminModuleZone">
+		<t:delegate to="activeAdminModule" />
+	</t:zone>
+
+	<p:sidebar>
+		<h4>
+			<span>Admin</span>
+			Menue
+		</h4>
+
+		<div class="sidebar-content">
+			<ul>
+				<li><t:eventlink event="showloginForm" zone="adminModuleZone">Login Form</t:eventlink></li>
+				<li><t:eventLink event="showLoginLink" zone="adminModuleZone">Login / Out Link</t:eventLink></li>
+			</ul>
+		</div>
+		<t:security.loginLink />
+	</p:sidebar>
+	<t:block t:id="loginFormBlock">
+		<t:security.loginForm />
+	</t:block>
+	
+	<t:block t:id="loginLinkBlock">
+		<t:security.loginLink />
+	</t:block>
+</html>
+

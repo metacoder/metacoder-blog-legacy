@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.Fetch;
@@ -17,11 +18,10 @@ public class User {
 	@Id
 	private String name;
 	
-	// hash and salt!
+	// hash and salt! // TODO
 	private String password;
 	
-	@ElementCollection
-	@Fetch(FetchMode.JOIN) // join is the new eager
+	@ElementCollection(fetch = FetchType.EAGER)
 	private Set<String> roles = new HashSet<String>();
 
 	public String getName() {
