@@ -1,3 +1,20 @@
+#header {
+	color: #FFF !important;
+}
+
+#header a {
+	color: #FFF;
+}
+
+#logoutLink {
+	position: absolute;
+	right: 0em;
+}
+
+#logo a {
+	text-decoration: none;
+}
+
 #blogPostPaginator {
 	border-top: 1px dotted #E1E1E1;
 	text-align: center !important;

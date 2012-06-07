@@ -95,11 +95,6 @@ p {
 	margin: 0 auto;
 }
 
-#header a {
-	text-decoration: none;
-	color: #FFF;
-}
-
 /* Logo */
 #logo {
 	position: absolute;
