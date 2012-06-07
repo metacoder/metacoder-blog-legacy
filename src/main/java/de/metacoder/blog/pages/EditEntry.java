@@ -8,10 +8,8 @@ import de.metacoder.blog.persistence.entities.BlogEntry;
 import de.metacoder.blog.persistence.repositories.BlogEntryRepository;
 
 /**
- * @author Benjamin Neff <a
- *         href="mailto:benjamin@coding4coffee.ch">benjamin@coding4coffee.ch</a>
+ * @author Benjamin Neff <a href="mailto:benjamin@coding4coffee.ch">benjamin@coding4coffee.ch</a>
  * @author Felix Becker <a href="mailto:becker@jubeco.de>becker@jubeco.de</a>
- * 
  */
 @RequiresRoles("admin")
 public class EditEntry {
@@ -24,7 +22,7 @@ public class EditEntry {
 	@Property
 	private BlogEntry blogEntry;
 
-	public void onActivate(Long id) {
+	public void onActivate(final Long id) {
 		this.id = id;
 		blogEntry = blogEntryRepository.findOne(id);
 	}

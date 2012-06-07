@@ -11,15 +11,15 @@
         http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
     ">
-	
+
 	<!-- <import resource="classpath:/configfiles/spring/profiles/foundationContextAllFeatures.xml"/>  -->
-	
+
 	<context:component-scan base-package="de.metacoder.blog" />
 
 	<bean id="propertyPlaceholder" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="#{systemProperties.getProperty('blogConfig') != null ? systemProperties.blogConfig : 'classpath:blogConfig.properties'}" />
 	</bean>
-	
+
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	<jpa:repositories base-package="de.metacoder.blog" />
 
@@ -33,7 +33,7 @@
 				<property name="databasePlatform" value="${database.hibernate.dialect}" />
 			</bean>
 		</property>
-		
+
 		<property name="jpaProperties">
        		<props>
            		<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>

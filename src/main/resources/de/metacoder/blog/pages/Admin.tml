@@ -8,10 +8,7 @@
 	</t:zone>
 
 	<p:sidebar>
-		<h4>
-			<span>Admin</span>
-			Menue
-		</h4>
+		<h4><span>Admin</span> Menü</h4>
 
 		<div class="sidebar-content">
 			<ul>
@@ -19,14 +16,15 @@
 				<li><t:eventLink event="showLoginLink" zone="adminModuleZone">Login / Out Link</t:eventLink></li>
 			</ul>
 		</div>
+		<hr/>
 		<t:security.loginLink />
 	</p:sidebar>
+
 	<t:block t:id="loginFormBlock">
 		<t:security.loginForm />
 	</t:block>
-	
+
 	<t:block t:id="loginLinkBlock">
 		<t:security.loginLink />
 	</t:block>
 </html>
-

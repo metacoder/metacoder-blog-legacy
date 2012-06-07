@@ -1,47 +1,47 @@
 <html t:type="layout" title="blog Index"
-      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-      xmlns:p="tapestry:parameter">
-        <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+	<!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
 
-    <p>${message:greeting}</p>
+	<p>${message:greeting}</p>
 
+	<div t:type="loop" source="blogEntries" value="blogEntry" class="post">
+		<h3>${blogEntry.title}</h3>
+		<ul class="post_info">
+			<li class="date">Posted by <a href="#">${blogEntry.authorName}</a> on ${blogEntry.creationDate}</li>
+			<li class="comments"><a href="#">comments not available</a></li>
+		</ul>
+		<p>
+			<t:outputRaw value="blogEntry.content" />
+		</p>
+		<p t:type="if" test="blogEntry.lastUpdateDate">Letzte aktualisierung: ${blogEntry.lastUpdateDate}</p>
+		<t:security.hasRole role="admin">
+			<p>
+				<t:pagelink t:id="edit" page="editEntry" context="blogEntry.id">Editieren</t:pagelink>
+				-
+				<t:actionlink t:id="delete" context="blogEntry.id">Löschen</t:actionlink>
+			</p>
+		</t:security.hasRole>
+	</div>
 
-    <div t:type="loop" source="blogEntries" value="blogEntry" class="post">
-        <h3>${blogEntry.title}</h3>
-        <ul class="post_info">
-						<li class="date">Posted by <a href="#">${blogEntry.authorName}</a> on ${blogEntry.creationDate}</li>
-						<li class="comments"><a href="#">comments not available</a></li>
-					</ul>		
-        <p><t:outputRaw value="blogEntry.content" /></p>
-        <p t:type="if" test="blogEntry.lastUpdateDate">Letzte aktualisierung: ${blogEntry.lastUpdateDate}</p>
-       	<t:security.hasRole role="admin">
-	        <p>
-	        	<t:pagelink t:id="edit" page="editEntry" context="blogEntry.id">Editieren</t:pagelink> - 
-	        	<t:actionlink t:id="delete" context="blogEntry.id">L&ouml;schen</t:actionlink>
-	        </p>
-        </t:security.hasRole>
-    </div>
+	<p id="blogPostPaginator">
+		<t:if test="hasPreviousPage">
+			<t:pagelink page="index" context="previousPage">&lt;&lt;</t:pagelink>
+			<p:else>
+				&lt;&lt;
+			</p:else>
+		</t:if>
 
-    <p id="blogPostPaginator">
-	    <t:if test="hasPreviousPage">
-	    	<t:pagelink page="index" context="previousPage">&lt;&lt;</t:pagelink>
-	    	<p:else>
-	    		&lt;&lt;
-	    	</p:else>
-	    </t:if>
-	    
-	    Seite ${nextPage} 
-	    
-	    <t:if test="hasNextPage">
-	    	<t:pagelink page="index" context="nextPage">&gt;&gt;</t:pagelink>
-	    	<p:else>
-	    		&gt;&gt;
-	    	</p:else>
-	    </t:if>
-    </p>
-    <!-- TODO jquery document ready -->
+		Seite ${nextPage}
+
+		<t:if test="hasNextPage">
+			<t:pagelink page="index" context="nextPage">&gt;&gt;</t:pagelink>
+			<p:else>
+				&gt;&gt;
+			</p:else>
+		</t:if>
+	</p>
+	<!-- TODO jquery document ready -->
 	<script type="text/javascript">
 		SyntaxHighlighter.all()
 	</script>
-   
 </html>

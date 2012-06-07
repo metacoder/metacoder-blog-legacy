@@ -7,6 +7,4 @@
 	<persistence-unit name="blog.persistence" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 	</persistence-unit>
-
-
 </persistence>

@@ -15,7 +15,6 @@ import org.apache.tapestry5.beaneditor.NonVisual;
 /**
  * @author Benjamin Neff <a href="mailto:benjamin@coding4coffee.ch">benjamin@coding4coffee.ch</a>
  * @author Felix Becker <a href="mailto:becker@jubeco.de">becker@jubeco.de</a>
- * 
  */
 @Entity
 public class BlogEntry {
@@ -50,7 +49,7 @@ public class BlogEntry {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(final Long id) {
 		this.id = id;
 	}
 
@@ -58,7 +57,7 @@ public class BlogEntry {
 		return title;
 	}
 
-	public void setTitle(String title) {
+	public void setTitle(final String title) {
 		this.title = title;
 	}
 
@@ -66,7 +65,7 @@ public class BlogEntry {
 		return creationDate;
 	}
 
-	public void setCreationDate(Date creationDate) {
+	public void setCreationDate(final Date creationDate) {
 		this.creationDate = creationDate;
 	}
 
@@ -74,7 +73,7 @@ public class BlogEntry {
 		return lastUpdateDate;
 	}
 
-	public void setLastUpdateDate(Date lastUpdateDate) {
+	public void setLastUpdateDate(final Date lastUpdateDate) {
 		this.lastUpdateDate = lastUpdateDate;
 	}
 
@@ -82,7 +81,7 @@ public class BlogEntry {
 		return content;
 	}
 
-	public void setContent(String content) {
+	public void setContent(final String content) {
 		this.content = content;
 	}
 
@@ -90,7 +89,7 @@ public class BlogEntry {
 		return authorName;
 	}
 
-	public void setAuthorName(String authorName) {
+	public void setAuthorName(final String authorName) {
 		this.authorName = authorName;
 	}
 

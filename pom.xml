@@ -2,11 +2,21 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>de.metacoder</groupId>
 	<artifactId>blog</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
+
 	<name>blog Tapestry 5 Application</name>
+	<inceptionYear>2012</inceptionYear>
+
+	<scm>
+		<connection>scm:git:git://github.com/SuperTux88/metacoder-blog.git</connection>
+		<developerConnection>scm:git:git@github.com:SuperTux88/metacoder-blog.git</developerConnection>
+		<url>https://github.com/SuperTux88/metacoder-blog</url>
+	</scm>
+
 	<dependencies>
 		<!-- Too set up an application with a database, change the artifactId below 
 			to tapestry-hibernate, and add a dependency on your JDBC driver. You'll also 
@@ -40,6 +50,50 @@
 		<!-- Uncomment this to add support for file uploads: <dependency> <groupId>org.apache.tapestry</groupId> 
 			<artifactId>tapestry-upload</artifactId> <version>${tapestry-release-version}</version> 
 			</dependency> -->
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>1.0.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.3.162</version>
+		</dependency>
+
+		<!-- TESTING -->
 
 		<!-- A dependency on either JUnit or TestNG is required, or the surefire 
 			plugin (which runs the tests) will fail, preventing Maven from packaging 
@@ -83,64 +137,8 @@
 			<version>${tapestry-release-version}</version>
 			<scope>provided</scope>
 		</dependency>
-		
-		
-		
-		
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aspects</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-dbcp</groupId>
-			<artifactId>commons-dbcp</artifactId>
-			<version>1.4</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aop</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-jpa</artifactId>
-			<version>1.0.3.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.0-api</artifactId>
-			<version>1.0.0.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-		
-				<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>1.3.162</version>
-		</dependency>
-
 	</dependencies>
+
 	<build>
 		<finalName>blog</finalName>
 		<plugins>
@@ -149,8 +147,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
 				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
+					<source>1.6</source>
+					<target>1.6</target>
 					<optimize>true</optimize>
 				</configuration>
 			</plugin>
@@ -169,11 +167,11 @@
 			<!-- Run the application using "mvn jetty:run" -->
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>maven-jetty-plugin</artifactId>
-				<version>6.1.16</version>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty.version}</version>
 				<configuration>
 					<!-- Log to the console. -->
-					<requestLog implementation="org.mortbay.jetty.NCSARequestLog">
+					<requestLog implementation="org.eclipse.jetty.server.NCSARequestLog">
 						<!-- This doesn't do anything for Jetty, but is a workaround for a 
 							Maven bug that prevents the requestLog from being set. -->
 						<append>true</append>
@@ -188,8 +186,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<reporting />
 
 	<repositories>
 
@@ -206,10 +202,11 @@
 		<servlet-api-release-version>2.5</servlet-api-release-version>
 		<testng-release-version>5.14.9</testng-release-version>
 		<easymock-release-version>3.0</easymock-release-version>
-		
-		
+
 		<spring.version>3.1.0.RELEASE</spring.version>
 		<junit.version>4.8.2</junit.version>
 		<hibernate.version>4.1.1.Final</hibernate.version>
+
+		<jetty.version>8.1.3.v20120416</jetty.version>
 	</properties>
 </project>

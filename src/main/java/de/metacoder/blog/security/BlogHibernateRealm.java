@@ -20,13 +20,13 @@ public class BlogHibernateRealm extends AuthorizingRealm {
 	private final UserRepository userRepository;
 
 	@Autowired
-	public BlogHibernateRealm(UserRepository userRepository) {
+	public BlogHibernateRealm(final UserRepository userRepository) {
 		this.userRepository = userRepository;
 
 		// FIXME for development only
 		// check if any user exits, if not generate default user
 		if (!userRepository.findAll().iterator().hasNext()) {
-			User user = new User();
+			final User user = new User();
 			user.setName("admin");
 			user.setPassword("admin");
 			user.getRoles().add(BlogRoles.ADMIN);
@@ -35,27 +35,25 @@ public class BlogHibernateRealm extends AuthorizingRealm {
 	}
 
 	@Override
-	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-		String principalName = getAvailablePrincipal(principals).toString();
+	protected AuthorizationInfo doGetAuthorizationInfo(final PrincipalCollection principals) {
+		final String principalName = getAvailablePrincipal(principals).toString();
 		return getUser(principalName);
-		
 	}
 
-	protected SimpleAccount getUser(String username) {
+	protected SimpleAccount getUser(final String username) {
 		final User user = userRepository.findOne(username);
-		
+
 		if(user != null){
 			return new SimpleAccount(user.getName(), user.getPassword(), getName(), user.getRoles(), null);
 		}
-		
+
 		return null;
 	}
-	
+
 	@Override
-	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-		UsernamePasswordToken upToken = (UsernamePasswordToken) token;
-		SimpleAccount account = getUser(upToken.getUsername());
+	protected AuthenticationInfo doGetAuthenticationInfo(final AuthenticationToken token) throws AuthenticationException {
+		final UsernamePasswordToken upToken = (UsernamePasswordToken) token;
+		final SimpleAccount account = getUser(upToken.getUsername());
 		return account;
 	}
-	
 }

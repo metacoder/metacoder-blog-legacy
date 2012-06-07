@@ -1,9 +1,7 @@
 /*
-
 	Nonzero1.0 by nodethirtythree design
 	http://www.nodethirtythree.com
 	missing in a maze
-
 */
 
 /* This controls the width of the fluid width layouts */
@@ -82,10 +80,6 @@ ul.links {
 
 ul.links li {
 	line-height: 2em;
-}
-
-ul.links li.first {
-	
 }
 
 p {
@@ -290,12 +284,12 @@ input.text {
 /* LAYOUT - 2 COLUMNS */
 
 /* Primary content */
-#primaryContent_2columns {
+#primaryContent {
 	position: relative;
 	margin-right: 17em;
 }
 
-#columnA_2columns {
+#mainContent {
 	position: relative;
 	float: left;
 	width: 100%;
@@ -304,11 +298,11 @@ input.text {
 }
 
 /* Secondary Content */
-#secondaryContent_2columns {
+#secondaryContent {
 	float: right;
 }
 
-#columnC_2columns {
+#sidebar {
 	width: 13.0em;
 	float: left;
 	padding: 0em 0em 0.5em 2em;

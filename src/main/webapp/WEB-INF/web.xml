@@ -14,9 +14,7 @@
 		development and qa. Remember that the default execution mode is production -->
 	<context-param>
 		<param-name>tapestry.development-modules</param-name>
-		<param-value>
-			de.metacoder.blog.services.DevelopmentModule
-		</param-value>
+		<param-value>de.metacoder.blog.services.DevelopmentModule</param-value>
 	</context-param>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>

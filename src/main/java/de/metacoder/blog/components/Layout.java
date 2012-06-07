@@ -1,11 +1,14 @@
 package de.metacoder.blog.components;
 
-import org.apache.shiro.realm.Realm;
-import org.apache.tapestry5.*;
-import org.apache.tapestry5.annotations.*;
-import org.apache.tapestry5.ioc.annotations.*;
 import org.apache.tapestry5.BindingConstants;
+import org.apache.tapestry5.Block;
+import org.apache.tapestry5.ComponentResources;
 import org.apache.tapestry5.SymbolConstants;
+import org.apache.tapestry5.annotations.Import;
+import org.apache.tapestry5.annotations.Parameter;
+import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.ioc.annotations.Symbol;
 import org.tynamo.security.services.SecurityService;
 
 /**
@@ -13,22 +16,22 @@ import org.tynamo.security.services.SecurityService;
  */
 @Import(
 		library =	{
-					"context:scripts/syntaxhighlight/shCore.js",
-					"context:scripts/syntaxhighlight/shBrushPlain.js",
-					"context:scripts/syntaxhighlight/shBrushBash.js",
-					"context:scripts/syntaxhighlight/shBrushCss.js",
-					"context:scripts/syntaxhighlight/shBrushJava.js",
-					"context:scripts/syntaxhighlight/shBrushSql.js",
-					"context:scripts/syntaxhighlight/shBrushXml.js",
-					"context:scripts/syntaxhighlight/shBrushDiff.js",
-					"context:scripts/syntaxhighlight/shBrushJScript.js",
-					"context:scripts/syntaxhighlight/shBrushScala.js",
-					"context:scripts/syntaxhighlight/shBrushCpp.js"
+					"context:scripts/sh/shCore.js",
+					"context:scripts/sh/shBrushPlain.js",
+					"context:scripts/sh/shBrushBash.js",
+					"context:scripts/sh/shBrushCss.js",
+					"context:scripts/sh/shBrushJava.js",
+					"context:scripts/sh/shBrushSql.js",
+					"context:scripts/sh/shBrushXml.js",
+					"context:scripts/sh/shBrushDiff.js",
+					"context:scripts/sh/shBrushJScript.js",
+					"context:scripts/sh/shBrushScala.js",
+					"context:scripts/sh/shBrushCpp.js"
 					},
 		stylesheet = {
 					"context:css/nonzero.css",
 					"context:css/blog.css",
-					"context:css/syntaxhighlight/shCoreEclipse.css"
+					"context:css/sh/shCoreEclipse.css"
 					})
 public class Layout {
 
@@ -49,10 +52,6 @@ public class Layout {
 
 	@Property
 	@Parameter(defaultPrefix = BindingConstants.LITERAL)
-	private String sidebarTitle;
-
-	@Property
-	@Parameter(defaultPrefix = BindingConstants.LITERAL)
 	private Block sidebar;
 
 	@Inject
@@ -64,8 +63,7 @@ public class Layout {
 	private String appVersion;
 
 	public String getClassForPageName() {
-		return resources.getPageName().equalsIgnoreCase(pageName) ? "current_page_item"
-				: null;
+		return resources.getPageName().equalsIgnoreCase(pageName) ? "current_page_item" : null;
 	}
 
 	public String[] getPageNames() {

@@ -8,19 +8,19 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
-
+/**
+ * @author Benjamin Neff <a href="mailto:benjamin@coding4coffee.ch">benjamin@coding4coffee.ch</a>
+ * @author Felix Becker <a href="mailto:becker@jubeco.de>becker@jubeco.de</a>
+ */
 @Entity
 public class User {
 
 	@Id
 	private String name;
-	
-	// hash and salt! // TODO
+
+	// TODO: hash and salt!
 	private String password;
-	
+
 	@ElementCollection(fetch = FetchType.EAGER)
 	private Set<String> roles = new HashSet<String>();
 
@@ -28,7 +28,7 @@ public class User {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 
@@ -36,7 +36,7 @@ public class User {
 		return password;
 	}
 
-	public void setPassword(String password) {
+	public void setPassword(final String password) {
 		this.password = password;
 	}
 
@@ -44,9 +44,7 @@ public class User {
 		return roles;
 	}
 
-	public void setRoles(Set<String> roles) {
+	public void setRoles(final Set<String> roles) {
 		this.roles = roles;
 	}
-
-	
 }
