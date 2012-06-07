@@ -5,7 +5,7 @@
 	<t:beanEditForm object="blogEntry">
 		<p:content>
 			<t:label for="content" />
-			<t:textarea t:id="content" t:value="blogEntry.content" />
+			<t:textarea t:id="content" t:value="blogEntry.content" style="width: 400px; height: 300px;"/>
 		</p:content>
 	</t:beanEditForm>
 </html>

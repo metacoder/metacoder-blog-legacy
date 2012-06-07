@@ -43,6 +43,8 @@ public class BlogEntry {
 
 	@Lob
 	private String content;
+
+	@NonVisual
 	private String authorName;
 
 	public Long getId() {
