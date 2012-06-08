@@ -12,6 +12,7 @@
 
 		<div class="sidebar-content">
 			<ul>
+				<li><t:eventLink event="showEditEntryPanel" zone="adminModuleZone">Add Entry</t:eventLink></li>			
 				<li><t:eventlink event="showloginForm" zone="adminModuleZone">Login Form</t:eventlink></li>
 				<li><t:eventLink event="showLoginLink" zone="adminModuleZone">Login / Out Link</t:eventLink></li>
 			</ul>
@@ -26,5 +27,9 @@
 
 	<t:block t:id="loginLinkBlock">
 		<t:security.loginLink />
+	</t:block>
+
+	<t:block t:id="editEntryBlock">
+			<div t:type="editBlogEntryPanel" />
 	</t:block>
 </html>

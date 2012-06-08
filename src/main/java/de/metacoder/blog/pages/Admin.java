@@ -3,6 +3,7 @@ package de.metacoder.blog.pages;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.tapestry5.Block;
 import org.apache.tapestry5.annotations.InjectComponent;
+import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Zone;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -18,32 +19,33 @@ import de.metacoder.blog.security.BlogRoles;
 public class Admin {
 
 	@Property
-	private String activeModule;
+	@Persist
+	protected Object activeAdminModule;
 
 	@InjectComponent
-	private Zone adminModuleZone;
+	protected Zone adminModuleZone;
 
 	@Inject
-	private Block loginLinkBlock;
+	protected Block loginLinkBlock;
 
 	@Inject
-	private Block loginFormBlock;
+	protected Block loginFormBlock;
+
+	@Inject
+	protected Block editEntryBlock;
 
 	public Zone onShowLoginLink() {
-		activeModule = "loginLink";
+		activeAdminModule = loginLinkBlock;
 		return adminModuleZone;
 	}
 
 	public Zone onShowLoginForm() {
-		activeModule = "loginForm";
+		activeAdminModule = loginFormBlock;
 		return adminModuleZone;
 	}
 
-	public Object getActiveAdminModule() {
-		if ("loginLink".equals(activeModule)) {
-			return loginLinkBlock;
-		} else {
-			return loginFormBlock;
-		}
+	public Zone onShowEditEntryPanel(){
+		activeAdminModule = editEntryBlock;
+		return adminModuleZone;
 	}
 }
