@@ -26,26 +26,18 @@ public class Admin {
 	protected Zone adminModuleZone;
 
 	@Inject
-	protected Block loginLinkBlock;
-
-	@Inject
-	protected Block loginFormBlock;
-
-	@Inject
 	protected Block editEntryBlock;
 
-	public Zone onShowLoginLink() {
-		activeAdminModule = loginLinkBlock;
-		return adminModuleZone;
-	}
-
-	public Zone onShowLoginForm() {
-		activeAdminModule = loginFormBlock;
-		return adminModuleZone;
-	}
+	@Inject
+	protected Block userManagementBlock;
 
 	public Zone onShowEditEntryPanel(){
 		activeAdminModule = editEntryBlock;
+		return adminModuleZone;
+	}
+
+	public Zone onShowUserManagementPanel(){
+		activeAdminModule = userManagementBlock;
 		return adminModuleZone;
 	}
 }

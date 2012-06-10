@@ -1,13 +1,22 @@
 package de.metacoder.blog.services;
 
+import org.apache.shiro.web.mgt.WebSecurityManager;
 import org.apache.tapestry5.SymbolConstants;
+import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.MappedConfiguration;
+import org.apache.tapestry5.ioc.annotations.Contribute;
 
 /**
  * This module is automatically included as part of the Tapestry IoC Registry if
  * <em>tapestry.execution-mode</em> includes <code>development</code>.
  */
 public class DevelopmentModule {
+
+	@Contribute(WebSecurityManager.class)
+	public static void resetAdminPassword(final Configuration<Object> configuration, UserService userService) {
+		userService.createUser("dev-admin", "admin");
+	}
+
 	public static void contributeApplicationDefaults(
 			final MappedConfiguration<String, Object> configuration) {
 		// The factory default is true but during the early stages of an
