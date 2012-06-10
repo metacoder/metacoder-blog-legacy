@@ -1,14 +1,10 @@
 package de.metacoder.blog.persistence.entities;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 
 import org.apache.tapestry5.beaneditor.NonVisual;
 
@@ -17,7 +13,7 @@ import org.apache.tapestry5.beaneditor.NonVisual;
  * @author Felix Becker <a href="mailto:becker@jubeco.de">becker@jubeco.de</a>
  */
 @Entity
-public class BlogEntry {
+public class BlogEntry extends AbstractEntity {
 
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
@@ -25,21 +21,6 @@ public class BlogEntry {
 	private Long id;
 	private String title;
 
-	@NonVisual
-	private Date creationDate;
-
-	@NonVisual
-	private Date lastUpdateDate;
-
-	@PrePersist
-	protected void generateCreationDate() {
-		creationDate = new Date();
-	}
-
-	@PreUpdate
-	protected void updateLastUpdateDate() {
-		lastUpdateDate = new Date();
-	}
 
 	@Lob
 	private String content;
@@ -63,21 +44,7 @@ public class BlogEntry {
 		this.title = title;
 	}
 
-	public Date getCreationDate() {
-		return creationDate;
-	}
-
-	public void setCreationDate(final Date creationDate) {
-		this.creationDate = creationDate;
-	}
-
-	public Date getLastUpdateDate() {
-		return lastUpdateDate;
-	}
-
-	public void setLastUpdateDate(final Date lastUpdateDate) {
-		this.lastUpdateDate = lastUpdateDate;
-	}
+	
 
 	public String getContent() {
 		return content;
@@ -95,10 +62,4 @@ public class BlogEntry {
 		this.authorName = authorName;
 	}
 
-	@Override
-	public String toString() {
-		return "BlogEntry [id=" + id + ", title=" + title + ", creationDate="
-				+ creationDate + ", lastUpdateDate=" + lastUpdateDate
-				+ ", content=" + content + ", authorName=" + authorName + "]";
-	}
 }
