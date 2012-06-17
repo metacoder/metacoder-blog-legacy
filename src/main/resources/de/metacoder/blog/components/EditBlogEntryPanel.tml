@@ -5,4 +5,5 @@
 			<t:textarea t:id="content" t:value="blogEntry.content" style="width: 400px; height: 300px;"/>
 		</p:content>
 	</t:beanEditForm>
+	
 </div>

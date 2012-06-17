@@ -1,4 +1,26 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"	xmlns:p="tapestry:parameter">
+	
+	<h4>Benutzer anlegen</h4>
+	
+	<t:form t:id="form">
+		<t:errors />
+		
+		<table style="border: 0px;">
+			<tr>
+				<td><t:label for="userName"/>:</td>
+				<td><input t:type="TextField" t:id="userName" t:validate="required,minlength=3" size="30"/></td>
+			</tr>
+			<tr>
+				<td><t:label for="password"/>:</td>
+				<td><input t:type="PasswordField" t:id="password" t:validate="required,minlength=3" size="30"/></td>
+			</tr>
+			<tr>	
+				<td colspan="2"><input type="submit" value="Benutzer anlegen"/></td>
+			</tr>
+		</table>
+	</t:form>
+	
+	<h4>Benutzerübersicht</h4>
 	<table border="1">
 		<tr>
 			<th>Name</th>

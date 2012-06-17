@@ -33,6 +33,9 @@ public class Admin {
 	@Inject
 	protected Block userManagementBlock;
 
+	@Inject
+	protected Block entryManagementBlock;
+	
 	public Zone onShowEditEntryPanel(){
 		activeAdminModule = editEntryBlock;
 		return adminModuleZone;
@@ -42,4 +45,10 @@ public class Admin {
 		activeAdminModule = userManagementBlock;
 		return adminModuleZone;
 	}
+	
+	public Zone onShowEntryManagementPanel(){
+		activeAdminModule = entryManagementBlock;
+		return adminModuleZone;
+	}
+	
 }

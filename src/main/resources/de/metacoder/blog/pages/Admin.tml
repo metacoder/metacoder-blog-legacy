@@ -1,8 +1,6 @@
 <html t:type="layout" title="Admin"
 	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
 
-	<p>Adminseite, uh yeah.</p>
-
 	<t:zone t:id="adminModuleZone">
 		<t:delegate to="activeAdminModule" />
 	</t:zone>
@@ -14,6 +12,7 @@
 			<ul>
 				<li><t:eventLink event="showUserManagementPanel" zone="adminModuleZone">Usermanagement</t:eventLink></li>
 				<li><t:eventLink event="showEditEntryPanel" zone="adminModuleZone">Add Entry</t:eventLink></li>
+				<li><t:eventLink event="showEntryManagementPanel" zone="adminModuleZone">Einträge verwalten</t:eventLink></li>
 			</ul>
 		</div>
 		<hr/>
@@ -21,10 +20,14 @@
 	</p:sidebar>
 
 	<t:block t:id="editEntryBlock">
-		<div t:type="editBlogEntryPanel" />
+		<t:editBlogEntryPanel />
 	</t:block>
 
 	<t:block t:id="userManagementBlock">
-		<div t:type="userManagementPanel" />
+		<t:userManagementPanel />
+	</t:block>
+	
+	<t:block t:id="entryManagementBlock">
+		<t:entryManagementPanel />
 	</t:block>
 </html>
