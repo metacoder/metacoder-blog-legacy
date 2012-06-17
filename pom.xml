@@ -18,6 +18,7 @@
 	</scm>
 
 	<dependencies>
+
 		<!-- Too set up an application with a database, change the artifactId below 
 			to tapestry-hibernate, and add a dependency on your JDBC driver. You'll also 
 			need to add Hibernate configuration files, such as hibernate.cfg.xml. -->
@@ -102,6 +103,11 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.3.162</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.20</version>
 		</dependency>
 
 		<!-- TESTING -->

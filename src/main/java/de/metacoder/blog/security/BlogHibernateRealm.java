@@ -8,6 +8,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.Sha512Hash;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -50,11 +51,15 @@ public class BlogHibernateRealm extends AuthorizingRealm {
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(final PrincipalCollection principals) {
 		final String principalName = getAvailablePrincipal(principals).toString();
-		return getUser(principalName);
+		final User user = userRepository.findOne(principalName);
+		return user != null ? new SimpleAuthorizationInfo(user.getRoles()) : null;
 	}
 
-	protected SimpleAccount getUser(final String username) {
-		final User user = userRepository.findOne(username);
+	@Override
+	protected AuthenticationInfo doGetAuthenticationInfo(final AuthenticationToken token) throws AuthenticationException {
+		final UsernamePasswordToken upToken = (UsernamePasswordToken) token;
+
+		final User user = userRepository.findOne(upToken.getUsername());
 
 		if(user != null){
 			SimpleAccount x = new SimpleAccount(user.getName(), user.getPassword(), getName(), user.getRoles(), null);
@@ -63,12 +68,5 @@ public class BlogHibernateRealm extends AuthorizingRealm {
 		}
 
 		return null;
-	}
-
-	@Override
-	protected AuthenticationInfo doGetAuthenticationInfo(final AuthenticationToken token) throws AuthenticationException {
-		final UsernamePasswordToken upToken = (UsernamePasswordToken) token;
-		final SimpleAccount account = getUser(upToken.getUsername());
-		return account;
 	}
 }

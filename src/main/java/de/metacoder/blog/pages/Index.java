@@ -2,6 +2,7 @@ package de.metacoder.blog.pages;
 
 import java.util.List;
 
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -38,6 +39,7 @@ public class Index {
 	}
 
 	@RequiresRoles(BlogRoles.ADMIN)
+	@RequiresAuthentication
 	public void onActionFromDelete(final Long blogEntryId) {
 		blogEntryRepository.delete(blogEntryId);
 	}

@@ -1,5 +1,6 @@
 package de.metacoder.blog.pages;
 
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -13,6 +14,7 @@ import de.metacoder.blog.persistence.repositories.BlogEntryRepository;
  * @author Felix Becker <a href="mailto:becker@jubeco.de>becker@jubeco.de</a>
  */
 @RequiresRoles("admin")
+@RequiresAuthentication
 public class EditEntry {
 
 	@Inject
