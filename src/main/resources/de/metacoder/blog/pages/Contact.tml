@@ -1,7 +1,7 @@
-<html t:type="layout" title="Contact de.metacoder"
+<t:layout title="Contact de.metacoder"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
 
     <p>Contact de.metacoder ...</p>
 
-</html>
+</t:layout>

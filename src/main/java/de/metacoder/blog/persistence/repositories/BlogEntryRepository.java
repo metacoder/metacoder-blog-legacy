@@ -3,7 +3,6 @@ package de.metacoder.blog.persistence.repositories;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import de.metacoder.blog.persistence.entities.BlogEntry;
@@ -14,5 +13,5 @@ import de.metacoder.blog.persistence.entities.BlogEntry;
  */
 public interface BlogEntryRepository extends PagingAndSortingRepository<BlogEntry, Long>{
 	@Query("FROM BlogEntry b ORDER BY b.creationDate DESC")
-	public List<BlogEntry> findAllOrderedByCreationDate();
+	public List<BlogEntry> getAllOrderedByCreationDate();
 }

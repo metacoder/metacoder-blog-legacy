@@ -1,0 +1,17 @@
+<t:adminlayout title="Benutzerübersicht" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+
+	<table border="1">
+		<tr>
+			<th>Name</th>
+			<th>Rollen</th>
+			<th colspan="2" />
+		</tr>
+		<tr t:type="loop" source="userRepository.findAll()" value="user">
+			<td>${user.name}</td>
+			<td>${user.roles}</td>
+			<td><t:pagelink page="admin/users/edituser" context="user.name">Editieren</t:pagelink></td>
+			<td><t:eventLink  event="deleteUser" parameters="prop:{'username':user.name}">Loeschen</t:eventLink></td>
+		</tr>
+	</table>
+
+</t:adminlayout>

@@ -1,0 +1,43 @@
+<t:layout title="Admin"
+	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+
+	<p:sidebar>
+		<h4>
+			<span>Einträge</span> Menü
+		</h4>
+
+		<div class="sidebar-content">
+			<ul>
+				<li>
+					<t:pagelink page="admin/entries">Übersicht</t:pagelink>
+				</li>
+				<li>
+					<t:pagelink page="admin/entries/newentry">Neu</t:pagelink>
+				</li>
+			</ul>
+		</div>		
+		
+		<h4><span>Benutzer</span> Menü</h4>	
+		<div class="sidebar-content">
+			<ul>
+				<li>
+					<t:pagelink page="admin/users">Übersicht</t:pagelink>
+				</li>
+				<li>
+					<t:pagelink page="admin/users/newuser">Neu</t:pagelink>
+				</li>
+			</ul>
+		</div>		
+		<hr />
+		<t:security.loginLink />
+	</p:sidebar>
+
+		<t:if test="title">
+			<h4>
+			${title}
+			</h4>
+		</t:if>
+	<t:body />
+
+
+</t:layout>

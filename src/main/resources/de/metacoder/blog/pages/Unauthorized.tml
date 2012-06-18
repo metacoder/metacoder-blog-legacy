@@ -1,7 +1,7 @@
-<html t:type="layout" title="Unauthorized"
+<t:layout title="Unauthorized"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
       xmlns:p="tapestry:parameter">
 
     <p>Sie besitzen nicht die nicht die nötigen Berechtigungen um diese Aktion auszuführen.</p>
 
-</html>
+</t:layout>

@@ -1,0 +1,4 @@
+<t:adminlayout title="Benutzer editieren" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+	<t:beanEditForm object="user">
+	</t:beanEditForm>
+</t:adminlayout>
