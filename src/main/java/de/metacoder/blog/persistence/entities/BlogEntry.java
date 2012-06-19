@@ -1,10 +1,14 @@
 package de.metacoder.blog.persistence.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 
 import org.apache.tapestry5.beaneditor.NonVisual;
 
@@ -21,13 +25,12 @@ public class BlogEntry extends AbstractEntity {
 	private Long id;
 	private String title;
 
-
 	@Lob
 	private String content;
 
-	@NonVisual
-	private String authorName;
-
+	@ManyToMany
+	private Set<User> authors = new HashSet<User>();
+	
 	public Long getId() {
 		return id;
 	}
@@ -44,8 +47,6 @@ public class BlogEntry extends AbstractEntity {
 		this.title = title;
 	}
 
-	
-
 	public String getContent() {
 		return content;
 	}
@@ -54,12 +55,12 @@ public class BlogEntry extends AbstractEntity {
 		this.content = content;
 	}
 
-	public String getAuthorName() {
-		return authorName;
+	public Set<User> getAuthors() {
+		return authors;
 	}
 
-	public void setAuthorName(final String authorName) {
-		this.authorName = authorName;
+	public void setAuthors(Set<User> authors) {
+		this.authors = authors;
 	}
 
 }
