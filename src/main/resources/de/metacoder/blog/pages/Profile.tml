@@ -1,0 +1,7 @@
+<t:layout title="${user.name}"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <p>${user.name}</p>
+
+</t:layout>

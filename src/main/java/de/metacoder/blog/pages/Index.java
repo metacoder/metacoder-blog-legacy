@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 
 import de.metacoder.blog.persistence.entities.BlogEntry;
+import de.metacoder.blog.persistence.entities.User;
 import de.metacoder.blog.persistence.repositories.BlogEntryRepository;
 import de.metacoder.blog.security.BlogRoles;
 
@@ -28,7 +29,9 @@ public class Index {
 	private BlogEntryRepository blogEntryRepository;
 
 	@Property
-	private BlogEntry blogEntry;
+	BlogEntry blogEntry;
+	
+	@Property User author;
 
 	private int pageId = 0;
 
@@ -45,7 +48,7 @@ public class Index {
 	}
 
 	public void onActivate(final int pageId) {
-		this.pageId = pageId;
+		this.pageId = pageId >= 0 ? pageId : 0;
 	}
 
 	public int getNextPage() {

@@ -5,7 +5,7 @@
 	<div t:type="loop" source="blogEntries" value="blogEntry" class="post">
 		<h3>${blogEntry.title}</h3>
 		<ul class="post_info">
-			<li class="date">Posted by <a href="#">${blogEntry.authors}</a> on ${blogEntry.creationDate}</li>
+			<li class="date">Posted by <span t:type="loop" source="blogEntry.authors" value="author"><t:pageLink page="profile" context="author.name">${author.name}</t:pageLink></span> on ${blogEntry.creationDate}</li>
 			<li class="comments"><a href="#">comments not available</a></li>
 		</ul>
 		<p>
