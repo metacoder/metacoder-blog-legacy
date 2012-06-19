@@ -10,8 +10,6 @@ import de.metacoder.blog.persistence.entities.BlogEntry;
 import de.metacoder.blog.persistence.repositories.BlogEntryRepository;
 import de.metacoder.blog.security.BlogRoles;
 
-@RequiresRoles(BlogRoles.ADMIN)
-@RequiresAuthentication
 public class EditEntry {
 	
 	@Inject

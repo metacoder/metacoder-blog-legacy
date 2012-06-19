@@ -1,7 +1,5 @@
 package de.metacoder.blog.pages.admin.users;
 
-import org.apache.shiro.authz.annotation.RequiresAuthentication;
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
@@ -10,11 +8,8 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 
 import de.metacoder.blog.persistence.entities.User;
 import de.metacoder.blog.persistence.repositories.UserRepository;
-import de.metacoder.blog.security.BlogRoles;
 import de.metacoder.blog.services.UserService;
 
-@RequiresRoles(BlogRoles.ADMIN)
-@RequiresAuthentication
 public class NewUser {
 	
 	@Property

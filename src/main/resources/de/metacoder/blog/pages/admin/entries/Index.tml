@@ -1,17 +1,18 @@
-<t:adminlayout title="Eintragsübersicht" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+<t:adminlayout title="Eintragsübersicht" xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
 
 <table border="1">
 		<tr>
-			<th>Name</th>
-			<th>Rollen</th>
+			<th>ID</th>
+			<th>Titel</th>
+			<th>Erstellungsdatum</th>
 			<th colspan="2" />
 		</tr>
 		<tr t:type="loop" source="blogEntryRepository.allOrderedByCreationDate" value="entry">
 			<td>${entry.id}</td>
 			<td>${entry.title}</td>
+			<td>${entry.creationDate}</td>
 			<td><t:pagelink page="admin/entries/editentry" context="entry.id">Eintrag editieren</t:pagelink></td>			
 			<td><t:eventLink event="deleteUser">Loeschen</t:eventLink></td>
 		</tr>
 	</table>
-
 </t:adminlayout>
