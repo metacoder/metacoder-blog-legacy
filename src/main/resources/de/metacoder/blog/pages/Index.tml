@@ -12,15 +12,6 @@
 			<t:outputRaw value="blogEntry.content" />
 		</p>
 		<p t:type="if" test="blogEntry.lastUpdateDate">Letzte aktualisierung: ${blogEntry.lastUpdateDate}</p>
-		<t:security.authenticated>
-			<t:security.hasRole role="admin">
-				<p>
-					<t:pagelink t:id="edit" page="admin/entries/editEntry" context="blogEntry.id">Editieren</t:pagelink>
-					-
-					<t:actionlink t:id="delete" context="blogEntry.id">Löschen</t:actionlink>
-				</p>
-			</t:security.hasRole>
-		</t:security.authenticated>
 	</div>
 
 	<p id="blogPostPaginator">

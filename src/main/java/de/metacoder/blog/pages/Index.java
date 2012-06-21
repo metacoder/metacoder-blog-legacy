@@ -2,8 +2,6 @@ package de.metacoder.blog.pages;
 
 import java.util.List;
 
-import org.apache.shiro.authz.annotation.RequiresAuthentication;
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.springframework.data.domain.PageRequest;
@@ -13,7 +11,6 @@ import org.springframework.data.domain.Sort.Direction;
 import de.metacoder.blog.persistence.entities.BlogEntry;
 import de.metacoder.blog.persistence.entities.User;
 import de.metacoder.blog.persistence.repositories.BlogEntryRepository;
-import de.metacoder.blog.security.BlogRoles;
 
 /**
  * @author Benjamin Neff <a href="mailto:benjamin@coding4coffee.ch">benjamin@coding4coffee.ch</a>
@@ -39,12 +36,6 @@ public class Index {
 		final PageRequest pageRequest = new PageRequest(pageId, PAGE_SIZE, new Sort(
 				Direction.DESC, "creationDate"));
 		return blogEntryRepository.findAll(pageRequest).getContent();
-	}
-
-	@RequiresRoles(BlogRoles.ADMIN)
-	@RequiresAuthentication
-	public void onActionFromDelete(final Long blogEntryId) {
-		blogEntryRepository.delete(blogEntryId);
 	}
 
 	public void onActivate(final int pageId) {

@@ -1,11 +1,9 @@
 package de.metacoder.blog.services;
 
 import java.io.IOException;
-import java.security.Security;
 
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.web.mgt.WebSecurityManager;
-import org.apache.tapestry5.MetaDataConstants;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.MappedConfiguration;
@@ -13,7 +11,6 @@ import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.Local;
-import org.apache.tapestry5.ioc.annotations.Marker;
 import org.apache.tapestry5.services.HttpServletRequestFilter;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.RequestFilter;
@@ -23,7 +20,6 @@ import org.slf4j.Logger;
 import org.tynamo.security.SecuritySymbols;
 import org.tynamo.security.services.SecurityFilterChainFactory;
 import org.tynamo.security.services.impl.SecurityFilterChain;
-import org.tynamo.security.shiro.authz.PortFilter;
 import org.tynamo.security.shiro.authz.SslFilter;
 
 import de.metacoder.blog.security.BlogRoles;
@@ -42,8 +38,8 @@ public class AppModule {
 	}
 	
 	@Contribute(HttpServletRequestFilter.class)
-	public static void setupSecurity(Configuration<SecurityFilterChain> configuration, SecurityFilterChainFactory factory, WebSecurityManager securityManager) {
-		SslFilter ssl = factory.ssl();
+	public static void setupSecurity(final Configuration<SecurityFilterChain> configuration, final SecurityFilterChainFactory factory, final WebSecurityManager securityManager) {
+		final SslFilter ssl = factory.ssl();
 		
 		if("development".equalsIgnoreCase(System.getProperty("tapestry.execution-mode"))){
 			ssl.setPort(8443); // TODO move to DevelopmentModule?
@@ -116,6 +112,7 @@ public class AppModule {
 	 */
 	public RequestFilter buildTimingFilter(final Logger log) {
 		return new RequestFilter() {
+			@Override
 			public boolean service(final Request request,
 					final Response response, final RequestHandler handler)
 					throws IOException {

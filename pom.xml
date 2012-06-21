@@ -187,19 +187,17 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>${jetty.version}</version>
 				<configuration>
-
 					<connectors>
 						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
 							<port>8080</port>
 						</connector>
 						<connector implementation="org.eclipse.jetty.server.ssl.SslSocketConnector">
 							<port>8443</port>
-							<keystore>${project.build.directory}/classes/jetty.keystore</keystore>
+							<keystore>${project.build.directory}/test-classes/jetty.keystore</keystore>
 							<password>jettykey</password>
 							<keyPassword>jettykey</keyPassword> <!-- case sensitive.. -->
 						</connector>
 					</connectors>
-
 
 					<!-- Log to the console. -->
 					<requestLog implementation="org.eclipse.jetty.server.NCSARequestLog">
