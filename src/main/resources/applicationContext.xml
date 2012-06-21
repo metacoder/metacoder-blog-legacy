@@ -53,5 +53,8 @@
 		<property name="password" value="${database.password}" />
 		<property name="initialSize" value="${database.connectionpool.initsize}" />
 		<property name="maxActive" value="${database.connectionpool.maxactive}" />
+		<!-- testOnBorrow is currently default true but we define it here again to make sure that its true for future versions of the basic data source. -->
+		<property name="testOnBorrow" value="true"/>
+		<property name="validationQuery" value="SELECT 1"/>
 	</bean>
 </beans>
