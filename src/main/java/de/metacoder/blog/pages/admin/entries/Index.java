@@ -15,4 +15,7 @@ public class Index {
 	@Property
 	BlogEntryRepository blogEntryRepository;
 
+	public void onActionFromDelete(final Long blogEntryId) {
+		blogEntryRepository.delete(blogEntryId);
+	}
 }

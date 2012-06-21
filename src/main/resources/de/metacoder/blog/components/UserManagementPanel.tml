@@ -31,7 +31,7 @@
 			<td>${user.name}</td>
 			<td>${user.roles}</td>
 			<td><t:eventLink event="editUser" parameters="prop:{'username':user.name}">Editieren</t:eventLink></td> <!-- zone.. -->
-			<td><t:eventLink event="deleteUser" parameters="prop:{'username':user.name}">Loeschen</t:eventLink></td>
+			<td><t:eventLink event="deleteUser" parameters="prop:{'username':user.name}">Löschen</t:eventLink></td>
 		</tr>
 	</table>
 </div>

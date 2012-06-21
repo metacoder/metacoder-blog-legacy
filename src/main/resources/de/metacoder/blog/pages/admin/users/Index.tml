@@ -10,7 +10,7 @@
 			<td>${user.name}</td>
 			<td>${user.roles}</td>
 			<td><t:pagelink page="admin/users/edituser" context="user.name">Editieren</t:pagelink></td>
-			<td><t:eventLink  event="deleteUser" parameters="prop:{'username':user.name}">Loeschen</t:eventLink></td>
+			<td><t:actionlink t:id="delete" context="user.name">Löschen</t:actionlink></td>
 		</tr>
 	</table>
 

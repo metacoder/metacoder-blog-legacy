@@ -12,7 +12,7 @@
 			<td>${entry.title}</td>
 			<td>${entry.creationDate}</td>
 			<td><t:pagelink page="admin/entries/editentry" context="entry.id">Eintrag editieren</t:pagelink></td>			
-			<td><t:eventLink event="deleteUser">Loeschen</t:eventLink></td>
+			<td><t:actionlink t:id="delete" context="entry.id">Löschen</t:actionlink></td>
 		</tr>
 	</table>
 </t:adminlayout>

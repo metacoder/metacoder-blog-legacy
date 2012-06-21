@@ -7,12 +7,17 @@ import de.metacoder.blog.persistence.entities.User;
 import de.metacoder.blog.persistence.repositories.UserRepository;
 
 public class Index {
+
+	@Property
+	User user;
+
 	
 	@Inject
 	@Property
 	UserRepository userRepository;
 
-	@Property
-	User user;
 
+	public void onActionFromDelete(final String username) {
+		userRepository.delete(username);
+	}
 }
