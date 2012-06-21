@@ -5,6 +5,7 @@ import java.security.Security;
 
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.web.mgt.WebSecurityManager;
+import org.apache.tapestry5.MetaDataConstants;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.MappedConfiguration;
@@ -87,6 +88,7 @@ public class AppModule {
 		// the first locale name is the default when there's no reasonable
 		// match).
 		configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en");
+		configuration.add(SymbolConstants.SECURE_ENABLED, false);
 
 		/* custom shiro config */
 		configuration.add(SecuritySymbols.LOGIN_URL, "/login");
