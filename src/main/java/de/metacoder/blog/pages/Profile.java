@@ -7,19 +7,20 @@ import de.metacoder.blog.persistence.entities.User;
 import de.metacoder.blog.persistence.repositories.UserRepository;
 
 public class Profile {
-	
-	@Inject UserRepository userRepository;
 
-	@Property User user;
-	
-	public Object onActivate(String username){
+	@Inject
+	UserRepository userRepository;
+
+	@Property
+	User user;
+
+	public Object onActivate(final String username) {
 		user = userRepository.findOne(username);
-		
-		if(user == null){
+
+		if (user == null) {
 			return Index.class;
 		}
-		
+
 		return null;
 	}
 }
-

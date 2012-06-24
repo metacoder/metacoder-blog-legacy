@@ -11,11 +11,9 @@ public class Index {
 	@Property
 	User user;
 
-	
 	@Inject
 	@Property
 	UserRepository userRepository;
-
 
 	public void onActionFromDelete(final String username) {
 		userRepository.delete(username);

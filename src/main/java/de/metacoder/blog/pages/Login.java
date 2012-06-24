@@ -8,6 +8,7 @@ import org.tynamo.security.services.SecurityService;
  * @author Felix Becker <a href="mailto:becker@jubeco.de>becker@jubeco.de</a>
  */
 public class Login {
+
 	@Inject
 	private SecurityService securityService;
 

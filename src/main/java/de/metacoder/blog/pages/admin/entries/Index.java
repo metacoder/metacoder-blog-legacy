@@ -7,7 +7,7 @@ import de.metacoder.blog.persistence.entities.BlogEntry;
 import de.metacoder.blog.persistence.repositories.BlogEntryRepository;
 
 public class Index {
-	
+
 	@Property
 	BlogEntry entry;
 

@@ -11,7 +11,7 @@ import de.metacoder.blog.persistence.repositories.UserRepository;
 import de.metacoder.blog.services.UserService;
 
 public class EditUser {
-	
+
 	@Inject
 	SecurityService securityService;
 
@@ -22,21 +22,22 @@ public class EditUser {
 
 	@Property
 	User user;
-	
+
 	@Component
 	Form passwordChangeForm;
-	
-	@Property String newPassword;
+
+	@Property
+	String newPassword;
 
 	@Inject
 	UserService userService;
-	
+
 	public void onActivate(final String username) {
 		this.username = username;
 		user = userRepository.findOne(username);
 	}
-	
-	public String onPassivate(){
+
+	public String onPassivate() {
 		return username;
 	}
 
@@ -44,15 +45,13 @@ public class EditUser {
 		// TODO implement me
 		return Index.class;
 	}
-	
-	
-	public Object onSuccessFromPasswordChangeForm(){
-		if(newPassword != null && newPassword.length() > 0){
+
+	public Object onSuccessFromPasswordChangeForm() {
+		if (newPassword != null && newPassword.length() > 0) {
 			System.out.println("success from pw change form!");
 			userService.changePasswordOfUser(user, newPassword);
 			return Index.class;
 		}
 		return null;
 	}
-	
 }

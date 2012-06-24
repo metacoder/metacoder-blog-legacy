@@ -1,6 +1,6 @@
 <t:adminlayout title="Eintragsübersicht" xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
 
-<table border="1">
+	<table border="1">
 		<tr>
 			<th>ID</th>
 			<th>Titel</th>

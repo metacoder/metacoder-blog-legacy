@@ -7,7 +7,7 @@ import de.metacoder.blog.persistence.entities.BlogEntry;
 import de.metacoder.blog.persistence.repositories.BlogEntryRepository;
 
 public class EditEntry {
-	
+
 	@Inject
 	private BlogEntryRepository blogEntryRepository;
 
@@ -29,5 +29,4 @@ public class EditEntry {
 		blogEntryRepository.save(blogEntry);
 		return Index.class;
 	}
-	
 }

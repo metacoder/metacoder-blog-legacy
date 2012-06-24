@@ -11,7 +11,7 @@ import de.metacoder.blog.persistence.repositories.UserRepository;
 import de.metacoder.blog.services.UserService;
 
 public class NewUser {
-	
+
 	@Property
 	String userName;
 
@@ -32,20 +32,16 @@ public class NewUser {
 
 	@Inject
 	UserService userService;
-	
-	
-	void onValidateFromForm()
-    {
-		User user = userRepository.findOne(userName);
-        if (user != null)
-        {
-            form.recordError("Der gewählte Benutzername existiert bereits.");
-        }
-    }
-	
-	Object onSuccess(){
+
+	void onValidateFromForm() {
+		final User user = userRepository.findOne(userName);
+		if (user != null) {
+			form.recordError("Der gewählte Benutzername existiert bereits.");
+		}
+	}
+
+	Object onSuccess() {
 		userService.createUser(userName, password);
 		return Index.class;
 	}
-	
 }

@@ -10,7 +10,7 @@ import de.metacoder.blog.persistence.repositories.BlogEntryRepository;
 import de.metacoder.blog.persistence.repositories.UserRepository;
 
 public class NewEntry {
-	
+
 	@Inject
 	private SecurityService securityService;
 
@@ -19,15 +19,15 @@ public class NewEntry {
 
 	@Inject
 	UserRepository userRepository;
-	
+
 	@Property
 	private BlogEntry blogEntry;
 
 	public Object onSuccess() {
-		User currentUser = userRepository.findOne(securityService.getSubject().getPrincipal().toString());
+		final User currentUser = userRepository.findOne(securityService.getSubject()
+				.getPrincipal().toString());
 		blogEntry.getAuthors().add(currentUser);
 		blogEntryRepository.save(blogEntry);
 		return Index.class;
 	}
-	
 }

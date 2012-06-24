@@ -13,5 +13,4 @@
 			<td><t:actionlink t:id="delete" context="user.name">Löschen</t:actionlink></td>
 		</tr>
 	</table>
-
 </t:adminlayout>
