@@ -40,6 +40,17 @@
 			<groupId>org.apache.tapestry</groupId>
 			<artifactId>tapestry-yuicompressor</artifactId>
 			<version>${tapestry-release-version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.yahoo.platform.yui</groupId>
+					<artifactId>yuicompressor</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.yahoo.platform.yui</groupId>
+			<artifactId>yuicompressor</artifactId>
+			<version>2.4.7</version>
 		</dependency>
 
 		<dependency>
@@ -226,12 +237,17 @@
 	</build>
 
 	<repositories>
-
-		<!-- This repository is only needed when the Tapestry version is a preview 
-			release, rather than a final release. -->
 		<repository>
-			<id>apache-staging</id>
-			<url>https://repository.apache.org/content/groups/staging/</url>
+			<id>coding4coffee</id>
+			<name>coding4coffee Maven2 Repository</name>
+			<url>http://nexus.coding4coffee.org/content/groups/public</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
 		</repository>
 	</repositories>
 
