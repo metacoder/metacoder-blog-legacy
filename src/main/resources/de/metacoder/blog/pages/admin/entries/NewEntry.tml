@@ -1,8 +1,9 @@
 <t:adminlayout title="Neuer Eintrag" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+
 	<t:beanEditForm object="blogEntry">
 		<p:content>
 			<t:label for="content" />
-			<t:textarea t:id="content" t:value="blogEntry.content" style="width: 400px; height: 300px;"/>
+			<t:textarea t:mixins="tinyMCE" t:id="content" t:value="blogEntry.content" style="width: 400px; height: 300px;" />
 		</p:content>
 	</t:beanEditForm>
 </t:adminlayout>
