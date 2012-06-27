@@ -60,9 +60,9 @@
 									<p>You are running Tapestry version <strong>${tapestryVersion}</strong>.</p>
 								</div>
 
-								<h4><span>Sample</span> Foo</h4>
+								<h4><span>Friends</span> of Eclipse</h4>
 								<div class="sidebar-content">
-									<p>abc</p>
+									<img src="${context:images/friendslogo.jpg}"/>
 								</div>
 							</p:else>
 						</t:if>
