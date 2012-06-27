@@ -67,7 +67,7 @@ public class Layout {
 	}
 
 	public String[] getPageNames() {
-		return new String[] { "Index", "About", "Contact", "admin" };
+		return new String[] { "Index", "About", "Contact" };
 	}
 	
 	public String getUsername(){
