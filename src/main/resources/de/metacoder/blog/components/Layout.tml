@@ -62,7 +62,7 @@
 
 								<h4><span>Friends</span> of Eclipse</h4>
 								<div class="sidebar-content">
-									<a href="http://www.eclipse.org/donate/"><img src="${context:images/friendslogo.jpg}"/></a>
+									<a href="http://www.eclipse.org/donate/" target="_blank"><img src="${context:images/friendslogo.jpg}"/></a>
 								</div>
 							</p:else>
 						</t:if>
