@@ -9,7 +9,7 @@ import org.apache.tapestry5.corelib.components.TextArea;
 
 @Import(
 		library =	{
-					"context:scripts/tiny_mce/tiny_mce.js",
+					"context:scripts/tiny_mce/tiny_mce.js"
 					}
 		)
 public class TinyMCE {
