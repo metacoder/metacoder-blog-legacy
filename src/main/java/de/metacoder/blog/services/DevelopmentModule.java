@@ -38,8 +38,9 @@ public class DevelopmentModule {
 		// assets. Web browsers will cache assets because of the far future
 		// expires header. If existing assets are changed, the version number
 		// should also change, to force the browser to download new versions.
+		final String version = DevelopmentModule.class.getPackage().getImplementationVersion();
 		configuration.add(SymbolConstants.APPLICATION_VERSION,
-				"0.0.1-SNAPSHOT-DEV");
+				version != null ? version + "-DEV": "0.0.1-SNAPSHOT-DEV");
 	}
 
 	/**
