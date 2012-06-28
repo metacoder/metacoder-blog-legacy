@@ -18,6 +18,7 @@ public class TinyMCE {
 			"<script type=\"text/javascript\">\n" +
 			"	tinyMCE.init({\n" + 
 			"		mode : \"exact\",\n" + 
+			"		theme_advanced_resizing : true," +
 			"		elements: \"" + textArea.getClientId() + "\"\n" +
 			"	});\n" + 
 			"</script>"
