@@ -11,7 +11,7 @@
 		<p>
 			<t:outputRaw value="blogEntry.content" />
 		</p>
-		<p t:type="if" test="blogEntry.lastUpdateDate">Letzte aktualisierung: ${blogEntry.lastUpdateDate}</p>
+		<p t:type="if" test="blogEntry.lastUpdateDate">Letzte Aktualisierung: ${blogEntry.lastUpdateDate}</p>
 	</div>
 
 	<p id="blogPostPaginator">
