@@ -1,5 +1,9 @@
 package de.metacoder.blog.components;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.Block;
 import org.apache.tapestry5.ComponentResources;
@@ -66,8 +70,14 @@ public class Layout {
 		return resources.getPageName().equalsIgnoreCase(pageName) ? "current_page_item" : null;
 	}
 
-	public String[] getPageNames() {
-		return new String[] { "Index", "About", "Contact" };
+	public Set<String> getPageNames() {
+		Set<String> pages = new HashSet<String>(Arrays.asList(new String[] { "Index", "About", "Contact" }));
+
+		if(securityService.isUser()){
+			pages.add("Admin");
+		}
+
+		return pages;
 	}
 	
 	public String getUsername(){

@@ -1,0 +1,15 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" class="post">
+
+	<t:if test="displayTitle">
+		<h3><t:pageLink page="entry" context="linkContext">${entry.title}</t:pageLink></h3>
+	</t:if>
+	<ul class="post_info">
+		<li class="date">Posted by <span t:type="loop" source="entry.authors" value="author"><t:pageLink page="profile" context="author.name">${author.name}</t:pageLink></span> on ${entry.creationDate}</li>
+		<li class="comments"><a href="#">comments not available</a></li>
+	</ul>
+	<p>
+		<t:outputRaw value="entry.content" />
+	</p>
+	<p t:type="if" test="entry.lastUpdateDate">Letzte Aktualisierung: ${entry.lastUpdateDate}</p>
+
+</div>

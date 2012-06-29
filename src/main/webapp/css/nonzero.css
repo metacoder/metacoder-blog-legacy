@@ -192,14 +192,22 @@ p {
 #main_inner .post h3 {
 	position: relative;
 	font-size: 1.7em;
-	padding-bottom: 1.2em;
+	margin-bottom: 0.1em;
+	border: 0;
+}
+#main_inner .post h3 a {
+	color: #184366;
+	text-decoration: none;
+}
+#main_inner .post h3 a:hover {
+	text-decoration: underline;
 }
 
 #main_inner .post ul.post_info {
 	list-style: none;
-	position: absolute;
-	top: 3em;
 	font-size: 0.8em;
+	padding-bottom: 0.8em;
+	border-bottom: dotted 1px #E1E1E1;
 }
 
 #main_inner .post ul.post_info li {
