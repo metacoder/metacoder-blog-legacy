@@ -2,17 +2,9 @@
 	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
 	<!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
 
-	<div t:type="loop" source="blogEntries" value="blogEntry" class="post">
-		<h3>${blogEntry.title}</h3>
-		<ul class="post_info">
-			<li class="date">Posted by <span t:type="loop" source="blogEntry.authors" value="author"><t:pageLink page="profile" context="author.name">${author.name}</t:pageLink></span> on ${blogEntry.creationDate}</li>
-			<li class="comments"><a href="#">comments not available</a></li>
-		</ul>
-		<p>
-			<t:outputRaw value="blogEntry.content" />
-		</p>
-		<p t:type="if" test="blogEntry.lastUpdateDate">Letzte aktualisierung: ${blogEntry.lastUpdateDate}</p>
-	</div>
+	<t:loop source="blogEntries" value="blogEntry">
+		<t:blogEntryDisplay entry="blogEntry" />
+	</t:loop>
 
 	<p id="blogPostPaginator">
 		<t:if test="hasPreviousPage">
