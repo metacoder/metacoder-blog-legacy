@@ -4,4 +4,8 @@
 
 	<t:blogEntryDisplay entry="blogEntry" displayTitle="false" />
 
+	<!-- TODO jquery document ready -->
+	<script type="text/javascript">
+		SyntaxHighlighter.all()
+	</script>
 </t:layout>
