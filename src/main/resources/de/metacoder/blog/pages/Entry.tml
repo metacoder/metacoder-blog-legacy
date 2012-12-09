@@ -4,8 +4,12 @@
 
 	<t:blogEntryDisplay entry="blogEntry" displayTitle="false" />
 
-	<!-- TODO jquery document ready -->
-	<script type="text/javascript">
-		SyntaxHighlighter.all()
-	</script>
+	<h3>Kommentare</h3>
+	
+	<t:loop source="blogEntry.comments" value="currentComment">
+		<h4>${currentComment.authorName} schrieb am ${currentComment.creationDate}</h4>
+		<p>${currentComment.content}</p>
+	</t:loop>
+	
+	<t:postCommentForm entry="blogEntry" />
 </t:layout>

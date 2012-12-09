@@ -9,8 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 import org.apache.tapestry5.beaneditor.NonVisual;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 /**
  * @author Benjamin Neff <a href="mailto:benjamin@coding4coffee.ch">benjamin@coding4coffee.ch</a>
@@ -30,6 +34,11 @@ public class BlogEntry extends AbstractEntity {
 
 	@ManyToMany
 	private Set<User> authors = new HashSet<User>();
+	
+	@OneToMany(orphanRemoval=true)
+	@Cascade(CascadeType.ALL)
+	@OrderBy("creationDate ASC")
+	private Set<BlogEntryComment> comments = new HashSet<BlogEntryComment>();
 	
 	public Long getId() {
 		return id;
@@ -63,4 +72,12 @@ public class BlogEntry extends AbstractEntity {
 		this.authors = authors;
 	}
 
+	public Set<BlogEntryComment> getComments() {
+		return comments;
+	}
+
+	public void setComments(Set<BlogEntryComment> comments) {
+		this.comments = comments;
+	}
+	
 }

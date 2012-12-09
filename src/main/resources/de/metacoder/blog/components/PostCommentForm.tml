@@ -1,0 +1,18 @@
+<div xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+	<t:form t:id="commentForm">
+				
+		<t:label for="nameField">Name: </t:label>
+		<br />
+		<input type="text" t:id="nameField" t:value="blogEntryComment.authorName" maxlength="100" />
+		<br />	
+		<t:label for="emailField">Email: (wird nicht angezeigt):</t:label>
+		<br />
+		<input type="text" t:id="emailField" t:value="blogEntryComment.authorEmail" maxlength="100" />
+		<br />
+		<t:label for="contentArea">Kommentar</t:label>
+		<br />
+		<textarea cols="50" rows="10" t:id="contentArea" t:value="blogEntryComment.content" />
+		<br />
+		<input type="submit" value="Kommentar absenden" />
+	</t:form>
+</div>

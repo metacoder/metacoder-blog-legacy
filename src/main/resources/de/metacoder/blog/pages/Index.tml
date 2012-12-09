@@ -23,8 +23,4 @@
 			</p:else>
 		</t:if>
 	</p>
-	<!-- TODO jquery document ready -->
-	<script type="text/javascript">
-		SyntaxHighlighter.all()
-	</script>
 </t:layout>

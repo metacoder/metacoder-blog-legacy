@@ -1,11 +1,13 @@
 package de.metacoder.blog.components;
 
+import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 
 import de.metacoder.blog.persistence.entities.BlogEntry;
 import de.metacoder.blog.persistence.entities.User;
 
+@Import(library={"context:scripts/sh/startSyntaxHighlighter.js"})
 public class BlogEntryDisplay {
 	@Parameter(required=true)
 	@Property
@@ -13,7 +15,7 @@ public class BlogEntryDisplay {
 
 	@Parameter
 	@Property
-	boolean displayTitle = true;
+	boolean displayTitle = true; // TODO meaningful name
 	
 	@Property
 	User author;
