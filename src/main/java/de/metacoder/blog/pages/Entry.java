@@ -20,6 +20,13 @@ public class Entry {
 	
 	@Property
 	BlogEntryComment currentComment;
+
+	@Property 
+	BlogEntryComment newComment;
+	
+	public void onActivate(){
+		newComment = new BlogEntryComment();
+	}
 	
 	final Pattern entryNameAndIdPattern = Pattern.compile(".*-([0-9]+)");
 

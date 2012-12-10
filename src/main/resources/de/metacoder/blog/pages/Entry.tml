@@ -11,5 +11,5 @@
 		<p>${currentComment.content}</p>
 	</t:loop>
 	
-	<t:postCommentForm entry="blogEntry" />
+	<t:postCommentForm entry="blogEntry" newComment="newComment" />
 </t:layout>

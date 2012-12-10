@@ -2,7 +2,6 @@ package de.metacoder.blog.components;
 
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Parameter;
-import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.corelib.components.TextArea;
@@ -30,18 +29,15 @@ public class PostCommentForm {
 	@Component
 	private TextField emailField;
 	
-	@Property
-	BlogEntryComment blogEntryComment;
-	
 	@Parameter(required=true)
 	private BlogEntry entry;
 	
-	public void pageAttached(){
-		blogEntryComment = new BlogEntryComment();
-	}
+	@Parameter(required=true)
+	@Property
+	private BlogEntryComment newComment;
 	
 	public void onSuccessFromCommentForm(){
-		entry.getComments().add(blogEntryComment);
+		entry.getComments().add(newComment);
 		blogEntryRepository.save(entry);
 	}
 }
