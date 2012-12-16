@@ -9,6 +9,7 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<title>${title}</title>
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.metacoder.de/feed/rss2" />
 	</head>
 	<body>
 		<!-- start header -->
