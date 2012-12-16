@@ -1,4 +1,4 @@
-package de.metacoder.blog.pages.rss;
+package de.metacoder.blog.pages.feed;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -11,7 +11,6 @@ import org.apache.tapestry5.annotations.ContentType;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 
 import de.metacoder.blog.persistence.entities.BlogEntry;
