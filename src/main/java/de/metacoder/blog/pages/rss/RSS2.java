@@ -11,6 +11,7 @@ import org.apache.tapestry5.annotations.ContentType;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 
 import de.metacoder.blog.persistence.entities.BlogEntry;
@@ -42,6 +43,6 @@ public class RSS2 {
 	}
 	
 	public List<BlogEntry> getEntriesForFeed(){
-		return blogEntryRepositroy.findAll(new PageRequest(0, 10, Direction.DESC)).getContent();
+		return blogEntryRepositroy.findAll(new PageRequest(0, 10, Direction.DESC, "creationDate")).getContent();
 	}
 }
