@@ -8,7 +8,7 @@
     <language>de-de</language>
     <copyright>Felix Becker, Benjamin Neff</copyright>
  
-    <t:loop source="blogEntryRepositroy.getAllOrderedByCreationDate()" value="currentEntry">
+    <t:loop source="entriesForFeed" value="currentEntry">
 	<item>
       <title>${currentEntry.title}</title>
       <link>http://www.metacoder.de/entry/feed-${currentEntry.id}</link>

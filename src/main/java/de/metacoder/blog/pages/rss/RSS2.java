@@ -3,12 +3,15 @@ package de.metacoder.blog.pages.rss;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.tapestry5.annotations.ContentType;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 
 import de.metacoder.blog.persistence.entities.BlogEntry;
 import de.metacoder.blog.persistence.entities.User;
@@ -36,5 +39,9 @@ public class RSS2 {
 	
 	public String getCreationDateASRFC822(){
 		return RFC822_DateFormat.format(currentEntry.getCreationDate());
+	}
+	
+	public List<BlogEntry> getEntriesForFeed(){
+		return blogEntryRepositroy.findAll(new PageRequest(0, 10, Direction.DESC)).getContent();
 	}
 }
