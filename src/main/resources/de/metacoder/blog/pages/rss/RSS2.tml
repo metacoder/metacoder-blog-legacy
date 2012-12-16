@@ -7,20 +7,13 @@
     <description>Blog entries of Metacoder.de</description>
     <language>de-de</language>
     <copyright>Felix Becker, Benjamin Neff</copyright>
-    <!--<pubDate></pubDate>-->
-    <!--<image>
-      <url>URL einer einzubindenden Grafik</url>
-      <title>Bildtitel</title>
-      <link>URL, mit der das Bild verknüpft ist</link>
-    </image>-->
  
     <t:loop source="blogEntryRepositroy.getAllOrderedByCreationDate()" value="currentEntry">
 	<item>
       <title>${currentEntry.title}</title>
-      <!--<description>Kurze Zusammenfassung des Eintrags</description>-->
-      <link>http://www.metacoder.de/entry/feed-7</link>
+      <link>http://www.metacoder.de/entry/feed-${currentEntry.id}</link>
       <author>${authorNames}</author>
-      <guid>${currentEntry.id}</guid>
+      <guid>http://www.metacoder.de/entry/feed-${currentEntry.id}</guid>
       <pubDate>${creationDateASRFC822}</pubDate>
     </item>
 	</t:loop>
