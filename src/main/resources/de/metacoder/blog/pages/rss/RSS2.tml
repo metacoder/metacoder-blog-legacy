@@ -12,7 +12,7 @@
 	<item>
       <title>${currentEntry.title}</title>
       <link>http://www.metacoder.de/entry/feed-${currentEntry.id}</link>
-      <author>${authorNames}</author>
+      <!--<author>${authorNames}</author>-->
       <guid>http://www.metacoder.de/entry/feed-${currentEntry.id}</guid>
       <pubDate>${creationDateASRFC822}</pubDate>
     </item>
