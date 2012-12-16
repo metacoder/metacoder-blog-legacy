@@ -21,7 +21,7 @@
       <link>http://www.metacoder.de/entry/feed-7</link>
       <author>${authorNames}</author>
       <guid>${currentEntry.id}</guid>
-      <pubDate>${currentEntry.creationDate}</pubDate>
+      <pubDate>${creationDateASRFC822}</pubDate>
     </item>
 	</t:loop>
  
