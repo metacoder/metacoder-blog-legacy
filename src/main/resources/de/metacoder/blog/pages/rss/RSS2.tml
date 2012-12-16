@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+ 
+<rss version="2.0" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+  <channel>
+    <title>Metacoder.de</title>
+    <link>http://www.metacoder.de</link>
+    <description>Blog entries of Metacoder.de</description>
+    <language>de-de</language>
+    <copyright>Felix Becker, Benjamin Neff</copyright>
+    <!--<pubDate></pubDate>-->
+    <!--<image>
+      <url>URL einer einzubindenden Grafik</url>
+      <title>Bildtitel</title>
+      <link>URL, mit der das Bild verknüpft ist</link>
+    </image>-->
+ 
+    <t:loop source="blogEntryRepositroy.getAllOrderedByCreationDate()" value="currentEntry">
+	<item>
+      <title>${currentEntry.title}</title>
+      <!--<description>Kurze Zusammenfassung des Eintrags</description>-->
+      <link>http://www.metacoder.de/entry/feed-7</link>
+      <author>${authorNames}</author>
+      <guid>${currentEntry.id}</guid>
+      <pubDate>${currentEntry.creationDate}</pubDate>
+    </item>
+	</t:loop>
+ 
+  </channel>
+ 
+</rss>
