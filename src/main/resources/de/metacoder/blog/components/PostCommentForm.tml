@@ -1,17 +1,27 @@
 <div xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
 	<t:form t:id="commentForm">
+		
+		<t:errors />
+		
 		<t:label for="nameField">Name: </t:label>
 		<br />
-		<input type="text" t:id="nameField" t:value="newComment.authorName" maxlength="100" />
+		<input type="text" t:id="nameField" t:value="newComment.authorName" validate="required" maxlength="100" />
 		<br />	
 		<t:label for="emailField">Email: (wird nicht angezeigt):</t:label>
 		<br />
-		<input type="text" t:id="emailField" t:value="newComment.authorEmail" maxlength="100" />
+		<input type="text" t:id="emailField" t:value="newComment.authorEmail" validate="required" maxlength="100" />
 		<br />
 		<t:label for="contentArea">Kommentar</t:label>
 		<br />
-		<textarea cols="50" rows="10" t:id="contentArea" t:value="newComment.content" />
+		<textarea cols="50" rows="10" t:id="contentArea" t:value="newComment.content" validate="required" />
+		<p>
 		<br />
+		<t:label for="captchaTextField">Captcha</t:label>
+		<br />
+		<input type="text" t:id="captchaTextField" value="captchaText" validate="required" />
+		<br />
+		<img src="data:image/jpeg;base64,${captcha.base64encodedBytes}" alt="captcha" />
+		</p>
 		<input type="submit" value="Kommentar absenden" />
 	</t:form>
 </div>
