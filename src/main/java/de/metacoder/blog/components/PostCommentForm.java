@@ -1,10 +1,5 @@
 package de.metacoder.blog.components;
 
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
-
-import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Parameter;
@@ -24,13 +19,6 @@ import de.metacoder.blog.persistence.repositories.BlogEntryRepository;
 
 public class PostCommentForm {
 
-	private static String secret = RandomStringUtils.randomAlphabetic(16); // 16 chars
-	private final SecretKey key;
-	
-	public PostCommentForm(){
-		key = new SecretKeySpec(secret.getBytes(), "AES");
-	}
-	
 	
 	@Inject
 	private BlogEntryRepository blogEntryRepository;
@@ -70,10 +58,7 @@ public class PostCommentForm {
 	@SetupRender
 	public void setupRender() throws Exception {
 		captcha = captchaPool.getCaptcha();
-		
-		final Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding", "SunJCE");
-		cipher.init(Cipher.ENCRYPT_MODE, key);
-		captchaSolveText = cipher.doFinal(captcha.getText().getBytes("UTF-8"));
+		captchaSolveText = captcha.getText();
 	}
 
 	@Component
@@ -83,18 +68,12 @@ public class PostCommentForm {
 	private String captchaText;
 	
 	@Property
-	@Persist(PersistenceConstants.CLIENT)
-	private byte[] captchaSolveText;
-	
+	@Persist(PersistenceConstants.SESSION)
+	private String captchaSolveText;
 	
 	public void onValidateFromCommentForm() throws Exception {
 		
-		final Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding", "SunJCE");
-		cipher.init(Cipher.DECRYPT_MODE, key);
-
-		final String solveTextDecrypted = new String(cipher.doFinal(captchaSolveText), "UTF-8");
-		
-		if(!solveTextDecrypted.equalsIgnoreCase(captchaText)){
+		if(!captchaSolveText.equalsIgnoreCase(captchaText)){
 			commentForm.recordError("you must solve the captcha correctly!");
 		}
 	}
