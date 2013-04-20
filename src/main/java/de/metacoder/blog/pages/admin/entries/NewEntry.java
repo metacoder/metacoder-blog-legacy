@@ -26,7 +26,7 @@ public class NewEntry {
 	public Object onSuccess() {
 		final User currentUser = userRepository.findOne(securityService.getSubject()
 				.getPrincipal().toString());
-		blogEntry.getAuthors().add(currentUser);
+		blogEntry.setAuthor(currentUser);
 		blogEntryRepository.save(blogEntry);
 		return Index.class;
 	}

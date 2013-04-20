@@ -5,7 +5,6 @@ import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 
 import de.metacoder.blog.persistence.entities.BlogEntry;
-import de.metacoder.blog.persistence.entities.User;
 
 @Import(library={"context:scripts/sh/startSyntaxHighlighter.js"})
 public class BlogEntryDisplay {
@@ -16,9 +15,6 @@ public class BlogEntryDisplay {
 	@Parameter
 	@Property
 	boolean displayTitle = true; // TODO meaningful name
-	
-	@Property
-	User author;
 	
 	public String getLinkContext(){
 		final String title = entry.getTitle() + "-" + entry.getId();

@@ -1,12 +1,9 @@
 package de.metacoder.blog.pages.feed;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.tapestry5.annotations.ContentType;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -14,7 +11,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 
 import de.metacoder.blog.persistence.entities.BlogEntry;
-import de.metacoder.blog.persistence.entities.User;
 import de.metacoder.blog.persistence.repositories.BlogEntryRepository;
 
 @ContentType("application/rss+xml")
@@ -29,14 +25,6 @@ public class RSS2 {
 	@Property
 	BlogEntry currentEntry;
 
-	public String getAuthorNames(){
-		Collection<String> names = new ArrayList<String>();
-		for(User author : currentEntry.getAuthors()){
-			names.add(author.getName());
-		}
-		return StringUtils.join(names, ",");
-	}
-	
 	public String getCreationDateASRFC822(){
 		return RFC822_DateFormat.format(currentEntry.getCreationDate());
 	}

@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
@@ -32,8 +32,8 @@ public class BlogEntry extends AbstractEntity {
 	@Lob
 	private String content;
 
-	@ManyToMany
-	private Set<User> authors = new HashSet<User>();
+	@ManyToOne
+	private User author;
 	
 	@OneToMany(orphanRemoval=true)
 	@Cascade(CascadeType.ALL)
@@ -64,12 +64,12 @@ public class BlogEntry extends AbstractEntity {
 		this.content = content;
 	}
 
-	public Set<User> getAuthors() {
-		return authors;
+	public User getAuthor() {
+		return author;
 	}
 
-	public void setAuthors(Set<User> authors) {
-		this.authors = authors;
+	public void setAuthor(User author) {
+		this.author = author;
 	}
 
 	public Set<BlogEntryComment> getComments() {
