@@ -43,11 +43,6 @@ public class Layout {
 	private SecurityService securityService;
 	
 	@Property
-	@Inject
-	@Symbol(SymbolConstants.TAPESTRY_VERSION)
-	private String tapestryVersion;
-	
-	@Property
 	@Parameter(required = true, defaultPrefix = BindingConstants.LITERAL)
 	private String title;
 

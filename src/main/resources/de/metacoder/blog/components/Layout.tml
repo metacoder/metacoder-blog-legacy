@@ -55,12 +55,6 @@
 						<t:if test="sidebar">
 							<t:delegate to="sidebar" />
 							<p:else> <!-- show default sidebar -->
-								<h4><span>Framework</span> version</h4>
-
-								<div class="sidebar-content">
-									<p>You are running Tapestry version <strong>${tapestryVersion}</strong>.</p>
-								</div>
-
 								<h4><span>Friends</span> of Eclipse</h4>
 								<div class="sidebar-content">
 									<a href="http://www.eclipse.org/donate/"><img src="${context:images/friendslogo.jpg}"/></a>
