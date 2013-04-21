@@ -13,15 +13,15 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 
 import de.metacoder.blog.captcha.Captcha;
 import de.metacoder.blog.captcha.CaptchaPool;
-import de.metacoder.blog.persistence.entities.BlogEntry;
-import de.metacoder.blog.persistence.entities.BlogEntryComment;
-import de.metacoder.blog.persistence.repositories.BlogEntryRepository;
+import de.metacoder.blog.services.BlogEntryService;
+import de.metacoder.blog.transferobjects.BlogEntryCommentTO;
+import de.metacoder.blog.transferobjects.BlogEntryTO;
 
 public class PostCommentForm {
 
 	
 	@Inject
-	private BlogEntryRepository blogEntryRepository;
+	private BlogEntryService blogEntryService;
 	
 	@Component
 	private Form commentForm;
@@ -36,15 +36,14 @@ public class PostCommentForm {
 	private TextField emailField;
 	
 	@Parameter(required=true)
-	private BlogEntry entry;
+	private BlogEntryTO entry;
 	
 	@Parameter(required=true)
 	@Property
-	private BlogEntryComment newComment;
+	private BlogEntryCommentTO newComment;
 	
 	public void onSuccessFromCommentForm(){
-		entry.getComments().add(newComment);
-		blogEntryRepository.save(entry);
+		blogEntryService.addComment(entry, newComment);
 	}
 	
 	

@@ -4,13 +4,10 @@ import java.util.List;
 
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 
-import de.metacoder.blog.persistence.entities.BlogEntry;
 import de.metacoder.blog.persistence.entities.User;
-import de.metacoder.blog.persistence.repositories.BlogEntryRepository;
+import de.metacoder.blog.services.BlogEntryService;
+import de.metacoder.blog.transferobjects.BlogEntryTO;
 
 /**
  * @author Benjamin Neff <a href="mailto:benjamin@coding4coffee.ch">benjamin@coding4coffee.ch</a>
@@ -23,19 +20,17 @@ public class Index {
 	private static final int PAGE_SIZE = 5;
 
 	@Inject
-	private BlogEntryRepository blogEntryRepository;
+	private BlogEntryService blogEntryService;
 
 	@Property
-	BlogEntry blogEntry;
+	BlogEntryTO blogEntry;
 	
 	@Property User author;
 
 	private int pageId = 0;
 
-	public List<BlogEntry> getBlogEntries() {
-		final PageRequest pageRequest = new PageRequest(pageId, PAGE_SIZE, new Sort(
-				Direction.DESC, "creationDate"));
-		return blogEntryRepository.findAll(pageRequest).getContent();
+	public List<BlogEntryTO> getBlogEntries() {
+		return blogEntryService.getAllBlogEntriesOrderedByDate(PAGE_SIZE, pageId);
 	}
 
 	public void onActivate(final int pageId) {
@@ -47,7 +42,7 @@ public class Index {
 	}
 
 	public boolean getHasNextPage() {
-		return blogEntryRepository.count() > (pageId + 1) * PAGE_SIZE;
+		return blogEntryService.numRows() > (pageId + 1) * PAGE_SIZE;
 	}
 
 	public boolean getHasPreviousPage() {

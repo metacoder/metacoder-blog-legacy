@@ -6,15 +6,11 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
-import org.apache.tapestry5.beaneditor.NonVisual;
-
 @MappedSuperclass
 public abstract class AbstractEntity {
 	
-	@NonVisual
 	private Date creationDate;
 
-	@NonVisual
 	private Date lastUpdateDate;
 
 	@PrePersist

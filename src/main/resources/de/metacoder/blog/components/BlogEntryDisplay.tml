@@ -4,7 +4,7 @@
 		<h3><t:pageLink page="entry" context="linkContext">${entry.title}</t:pageLink></h3>
 	</t:if>
 	<ul class="post_info">
-		<li class="date">Von: <span><t:pageLink page="profile" context="entry.author.name">${entry.author.name}</t:pageLink></span> am ${entry.creationDate}</li>
+		<li class="date">Von: <span><t:pageLink page="profile" context="entry.author">${entry.author}</t:pageLink></span> am ${entry.creationDate}</li>
 		<li class="comments">
 			<t:if test="displayTitle">
 					<t:pageLink page="entry" context="linkContext" anchor="comments">Kommentare (${entry.getComments().size()})</t:pageLink>
@@ -17,6 +17,6 @@
 	<p>
 		<t:outputRaw value="entry.content" />
 	</p>
-	<p t:type="if" test="entry.lastUpdateDate">Letzte Aktualisierung: ${entry.lastUpdateDate}</p>
+	<p t:type="if" test="entry.lastUpdated">Letzte Aktualisierung: ${entry.lastUpdated}</p>
 
 </div>

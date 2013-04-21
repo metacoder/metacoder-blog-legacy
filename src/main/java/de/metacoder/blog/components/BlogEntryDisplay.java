@@ -4,13 +4,13 @@ import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.annotations.Property;
 
-import de.metacoder.blog.persistence.entities.BlogEntry;
+import de.metacoder.blog.transferobjects.BlogEntryTO;
 
 @Import(library={"context:scripts/sh/startSyntaxHighlighter.js"})
 public class BlogEntryDisplay {
 	@Parameter(required=true)
 	@Property
-	BlogEntry entry;
+	BlogEntryTO entry;
 
 	@Parameter
 	@Property

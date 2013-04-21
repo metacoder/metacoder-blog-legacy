@@ -7,7 +7,7 @@
 	<h3>Kommentare</h3>
 	
 	<t:loop source="blogEntry.comments" value="currentComment">
-		<h4>${currentComment.authorName} schrieb am ${currentComment.creationDate}</h4>
+		<h4>${currentComment.authorname} schrieb am ${currentComment.creationDate}</h4>
 		<p>${currentComment.content}</p>
 	</t:loop>
 	

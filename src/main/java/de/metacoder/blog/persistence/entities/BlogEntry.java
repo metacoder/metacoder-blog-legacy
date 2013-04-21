@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
-import org.apache.tapestry5.beaneditor.NonVisual;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
@@ -25,7 +24,6 @@ public class BlogEntry extends AbstractEntity {
 
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
-	@NonVisual
 	private Long id;
 	private String title;
 

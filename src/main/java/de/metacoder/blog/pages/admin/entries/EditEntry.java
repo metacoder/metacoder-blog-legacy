@@ -3,22 +3,22 @@ package de.metacoder.blog.pages.admin.entries;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-import de.metacoder.blog.persistence.entities.BlogEntry;
-import de.metacoder.blog.persistence.repositories.BlogEntryRepository;
+import de.metacoder.blog.services.BlogEntryService;
+import de.metacoder.blog.transferobjects.BlogEntryTO;
 
 public class EditEntry {
 
 	@Inject
-	private BlogEntryRepository blogEntryRepository;
+	private BlogEntryService blogEntryService;
 
 	private Long id;
 
 	@Property
-	private BlogEntry blogEntry;
+	private BlogEntryTO blogEntry;
 
 	public void onActivate(final Long id) {
 		this.id = id;
-		blogEntry = blogEntryRepository.findOne(id);
+		blogEntry = blogEntryService.getEntry(id);
 	}
 
 	public Long onPassivate() {
@@ -26,7 +26,7 @@ public class EditEntry {
 	}
 
 	public Object onSuccess() {
-		blogEntryRepository.save(blogEntry);
+		blogEntryService.updateBlogEntry(blogEntry);
 		return Index.class;
 	}
 }

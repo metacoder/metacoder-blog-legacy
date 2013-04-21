@@ -21,6 +21,20 @@
 	
 	<cache:annotation-driven />
 	
+	<bean id="mbeanServer" class="org.springframework.jmx.support.MBeanServerFactoryBean">
+    	<property name="locateExistingServerIfPossible" value="true"/>
+	</bean>
+
+	<bean id="managementService" class="net.sf.ehcache.management.ManagementService"
+		init-method="init" destroy-method="dispose">
+		<constructor-arg ref="ehcache" />
+		<constructor-arg ref="mbeanServer" />
+		<constructor-arg index="2" value="true" />
+		<constructor-arg index="3" value="true" />
+		<constructor-arg index="4" value="true" />
+		<constructor-arg index="5" value="true" />
+	</bean>
+	
 	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
 		<property name="cacheManager" ref="ehcache" />
 	</bean>

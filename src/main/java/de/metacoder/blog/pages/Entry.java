@@ -6,26 +6,26 @@ import java.util.regex.Pattern;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-import de.metacoder.blog.persistence.entities.BlogEntry;
-import de.metacoder.blog.persistence.entities.BlogEntryComment;
-import de.metacoder.blog.persistence.repositories.BlogEntryRepository;
+import de.metacoder.blog.services.BlogEntryService;
+import de.metacoder.blog.transferobjects.BlogEntryCommentTO;
+import de.metacoder.blog.transferobjects.BlogEntryTO;
 
 public class Entry {
 
 	@Inject
-	BlogEntryRepository blogEntryRepository;
+	BlogEntryService blogEntryService;
 
 	@Property
-	BlogEntry blogEntry;
+	BlogEntryTO blogEntry;
 	
 	@Property
-	BlogEntryComment currentComment;
+	BlogEntryCommentTO currentComment;
 
 	@Property 
-	BlogEntryComment newComment;
+	BlogEntryCommentTO newComment;
 	
 	public void onActivate(){
-		newComment = new BlogEntryComment();
+		newComment = new BlogEntryCommentTO();
 	}
 	
 	final Pattern entryNameAndIdPattern = Pattern.compile(".*-([0-9]+)");
@@ -37,7 +37,7 @@ public class Entry {
 		final Matcher m = entryNameAndIdPattern.matcher(entryNameAndId);
 		if(m.matches()){
 			final Long entryId = Long.parseLong(m.group(1));
-			blogEntry = blogEntryRepository.findOne(entryId);
+			blogEntry = blogEntryService.getEntry(entryId);
 			return blogEntry == null ? Index.class : null;
 		} else {
 			return Index.class;
