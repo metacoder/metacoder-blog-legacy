@@ -23,6 +23,7 @@ public class NFSLoggingFilter implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain arg2) throws IOException, ServletException {
+		trackRequest();
 		arg2.doFilter(req, resp);
 	}
 	
