@@ -30,7 +30,7 @@ public class NFSLoggingFilter implements Filter {
 	
 	private synchronized void trackRequest(){
 		try {
-			FileUtils.writeStringToFile(logFile, "traced request");
+			FileUtils.writeStringToFile(logFile, "traced request", true);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
