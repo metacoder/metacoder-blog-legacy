@@ -2,4 +2,7 @@
 <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
 	<defaultCache eternal="true" maxElementsInMemory="100" overflowToDisk="false" />
 	<cache name="BlogEntryTOs" maxElementsInMemory="10000" eternal="true" overflowToDisk="false" />
+	
+	<cache name="globalPageCache" maxElementsInMemory="10000" eternal="true" overflowToDisk="false" />
+	
 </ehcache>

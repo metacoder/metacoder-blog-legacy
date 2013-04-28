@@ -66,7 +66,7 @@ public class BlogEntryService {
 	}
 
 	@Transactional
-	@CacheEvict(value=Caches.BLOG_ENTRY_TOS, allEntries=true)
+	@CacheEvict(value={Caches.BLOG_ENTRY_TOS, Caches.GLOBAL_PAGE_CACHE}, allEntries=true)
 	public void addComment(BlogEntryTO entry, BlogEntryCommentTO newComment) {
 		BlogEntry blogEntry = blogEntryRepository.findOne(entry.getId());
 		blogEntry.getComments().add(newComment.toBlogEntryComment());
@@ -74,7 +74,7 @@ public class BlogEntryService {
 	}
 
 	@Transactional
-	@CacheEvict(value=Caches.BLOG_ENTRY_TOS, allEntries=true)
+	@CacheEvict(value={Caches.BLOG_ENTRY_TOS, Caches.GLOBAL_PAGE_CACHE}, allEntries=true)
 	public void createNewBlogEntry(BlogEntryTO blogEntry) {
 		BlogEntry newEntry = new BlogEntry();
 
@@ -86,7 +86,7 @@ public class BlogEntryService {
 	}
 	
 	@Transactional
-	@CacheEvict(value=Caches.BLOG_ENTRY_TOS, allEntries=true)
+	@CacheEvict(value={Caches.BLOG_ENTRY_TOS, Caches.GLOBAL_PAGE_CACHE}, allEntries=true)
 	public void updateBlogEntry(BlogEntryTO blogEntryTO){
 		BlogEntry blogEntry = blogEntryRepository.findOne(blogEntryTO.getId());
 		blogEntry.setContent(blogEntryTO.getContent());
@@ -94,7 +94,7 @@ public class BlogEntryService {
 	}
 
 	@Transactional
-	@CacheEvict(value=Caches.BLOG_ENTRY_TOS, allEntries=true)
+	@CacheEvict(value={Caches.BLOG_ENTRY_TOS, Caches.GLOBAL_PAGE_CACHE}, allEntries=true)
 	public void deleteEntry(Long blogEntryId) {
 		blogEntryRepository.delete(blogEntryId);
 	}
