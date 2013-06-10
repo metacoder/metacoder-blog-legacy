@@ -37,7 +37,8 @@
 			${title}
 			</h4>
 		</t:if>
-	<t:body />
-
+    <div ng-app="">
+	    <t:body />
+    </div>
 
 </t:layout>
