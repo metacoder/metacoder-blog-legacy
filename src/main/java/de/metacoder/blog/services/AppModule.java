@@ -45,7 +45,12 @@ public class AppModule {
 		
 	}
 
-	public static void bind(final ServiceBinder binder) {
+    public void contributeIgnoredPathsFilter(Configuration<String> conf) {
+        conf.add("/services/.*");
+    }
+
+
+    public static void bind(final ServiceBinder binder) {
 		// binder.bind(MyServiceInterface.class, MyServiceImpl.class);
 
 		// Make bind() calls on the binder object to define most IoC services.

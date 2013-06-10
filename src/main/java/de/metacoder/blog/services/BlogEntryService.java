@@ -9,6 +9,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,9 +20,13 @@ import de.metacoder.blog.persistence.repositories.BlogEntryRepository;
 import de.metacoder.blog.persistence.repositories.UserRepository;
 import de.metacoder.blog.transferobjects.BlogEntryCommentTO;
 import de.metacoder.blog.transferobjects.BlogEntryTO;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Service
 @Cacheable(Caches.BLOG_ENTRY_TOS)
+@Controller
 //@Transactional // todo check if tx is opened when cache contains value
 public class BlogEntryService {
 	
@@ -42,6 +48,8 @@ public class BlogEntryService {
 	}
 	
 	@Cacheable(value=Caches.BLOG_ENTRY_TOS, key="'page'.concat(#pageNumber).concat('size').concat(#pageSize)")
+    @RequestMapping(value="/entries", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
 	public List<BlogEntryTO> getAllBlogEntriesOrderedByDate(int pageSize, int pageNumber){
 
 		final PageRequest pageRequest = new PageRequest(pageNumber, pageSize, new Sort(Direction.DESC, "creationDate"));
@@ -56,6 +64,8 @@ public class BlogEntryService {
 	}
 
 	@Cacheable(value=Caches.BLOG_ENTRY_TOS, key="'numRows'")
+    @RequestMapping(value="/numRows", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
 	public long numRows() {
 		return blogEntryRepository.count();
 	}
