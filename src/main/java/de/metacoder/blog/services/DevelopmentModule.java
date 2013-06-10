@@ -1,10 +1,13 @@
 package de.metacoder.blog.services;
 
+import de.metacoder.blog.transferobjects.BlogEntryTO;
 import org.apache.shiro.web.mgt.WebSecurityManager;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.annotations.Contribute;
+
+import java.util.UUID;
 
 /**
  * This module is automatically included as part of the Tapestry IoC Registry if
@@ -13,8 +16,17 @@ import org.apache.tapestry5.ioc.annotations.Contribute;
 public class DevelopmentModule {
 
 	@Contribute(WebSecurityManager.class)
-	public static void resetAdminPassword(final Configuration<Object> configuration, final UserService userService) {
+	public static void resetAdminPassword(final Configuration<Object> configuration, final UserService userService, final BlogEntryService blogEntryService) {
 		userService.createUser("dev-admin", "admin");
+
+        /* create 100 blog posts */
+        for(int i = 0; i < 100; i++){
+            BlogEntryTO blogEntryTo = new BlogEntryTO();
+            blogEntryTo.setTitle("Test title " + i );
+            blogEntryTo.setAuthor("dev-admin");
+            blogEntryTo.setContent("das ist ein test blog entry eintrag (" + i + ") - " + UUID.randomUUID().toString());
+            blogEntryService.createNewBlogEntry(blogEntryTo);
+        }
 	}
 
 	public static void contributeApplicationDefaults(
