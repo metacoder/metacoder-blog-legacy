@@ -70,6 +70,7 @@ public class AppModule {
 		final String version = AppModule.class.getPackage().getImplementationVersion();
 		configuration.override(SymbolConstants.APPLICATION_VERSION,	version != null ? version : "0.0.1-SNAPSHOT");
         configuration.override(SymbolConstants.MINIFICATION_ENABLED, false);
+        configuration.override(SymbolConstants.FORM_CLIENT_LOGIC_ENABLED, false);
 
 	}
 

@@ -14,6 +14,7 @@ import org.apache.tapestry5.annotations.Property;
 
 @Import(
         library ={
+                "context:scripts/jquery/jquery-2.0.2.min.js",
                 "context:bootstrap/js/bootstrap.min.js",
                 "context:scripts/angularjs/angular.min.js",
                 "context:scripts/app.js"

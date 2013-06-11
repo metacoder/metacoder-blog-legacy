@@ -1,8 +1,6 @@
 <div xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
 	<t:form t:id="commentForm">
 		
-		<t:errors />
-		
 		<t:label for="nameField">Name: </t:label>
 		<br />
 		<input type="text" t:id="nameField" t:value="newComment.authorName" validate="required" maxlength="100" />
