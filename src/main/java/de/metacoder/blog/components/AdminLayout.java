@@ -14,7 +14,12 @@ import org.apache.tapestry5.annotations.Property;
 
 @Import(
         library ={
-                "context:scripts/angularjs/angular.min.js"
+                "context:bootstrap/js/bootstrap.min.js",
+                "context:scripts/angularjs/angular.min.js",
+                "context:scripts/app.js"
+        }, stylesheet = {
+            "context:bootstrap/css/bootstrap.min.css",
+            "context:bootstrap/css/bootstrap-responsive.min.css"
         })
 public class AdminLayout {
 	
