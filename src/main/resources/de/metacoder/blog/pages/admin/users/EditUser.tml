@@ -9,6 +9,6 @@
 	</t:form>
 	
 	<hr />
-	<t:beanEditForm object="user" t:id="beanEditForm">
+	<t:beanEditForm object="userBO" t:id="beanEditForm">
 	</t:beanEditForm>
 </t:adminlayout>

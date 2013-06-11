@@ -28,8 +28,6 @@
 				</li>
 			</ul>
 		</div>		
-		<hr />
-		<t:security.loginLink />
 	</p:sidebar>
 
 		<t:if test="title">

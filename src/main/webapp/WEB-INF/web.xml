@@ -37,9 +37,18 @@
 			<param-value>entityManagerFactory</param-value>
 		</init-param>
 	</filter>
-	
 
-	<!-- it's required to load the oemInViewFilter BEFORE the tapestry filter! -->
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+
+    <!-- it's required to load the oemInViewFilter BEFORE the tapestry filter! -->
+
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
 	<filter-mapping>
 		<filter-name>oemInViewFilter</filter-name>
@@ -50,6 +59,7 @@
 		<filter-name>app</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+
 
     <servlet>
         <servlet-name>dispatcherServlet</servlet-name>

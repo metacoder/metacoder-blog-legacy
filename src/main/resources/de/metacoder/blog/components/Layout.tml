@@ -15,11 +15,6 @@
 		<!-- start header -->
 		<div id="header">
 			<div id="header_inner" class="fixed">
-				<div id="logoutLink">
-					<t:security.user>
-						${username} - <t:security.loginlink />
-					</t:security.user>
-				</div>
 				<div id="logo">
 					<h1><span><t:pagelink page="index">de.metacoder:blog</t:pagelink></span></h1>
 					<h2>version ${appVersion}</h2>

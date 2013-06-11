@@ -3,7 +3,7 @@ package de.metacoder.blog.pages;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-import de.metacoder.blog.persistence.entities.User;
+import de.metacoder.blog.persistence.entities.UserBO;
 import de.metacoder.blog.persistence.repositories.UserRepository;
 
 public class Profile {
@@ -12,12 +12,12 @@ public class Profile {
 	UserRepository userRepository;
 
 	@Property
-	User user;
+    UserBO userBO;
 
 	public Object onActivate(final String username) {
-		user = userRepository.findOne(username);
+		userBO = userRepository.findOne(username);
 
-		if (user == null) {
+		if (userBO == null) {
 			return Index.class;
 		}
 

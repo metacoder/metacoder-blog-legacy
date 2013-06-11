@@ -1,12 +1,12 @@
 package de.metacoder.blog.services;
 
+import de.metacoder.blog.persistence.entities.UserBO;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.Sha512Hash;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import de.metacoder.blog.persistence.entities.User;
 import de.metacoder.blog.persistence.repositories.UserRepository;
 import de.metacoder.blog.security.BlogRoles;
 
@@ -19,25 +19,25 @@ public class UserService {
 	
 	public void createUser(String username, String password){
 
-		final User user = new User();
-		user.setName(username);
+		final UserBO userBO = new UserBO();
+		userBO.setName(username);
 
-		setPasswordWithRandomSaltForUser(user, password);
+		setPasswordWithRandomSaltForUser(userBO, password);
 		
-		// TODO currently each user is an admin. Fix this in later versions when you need a more granular role concept.
-		user.getRoles().add(BlogRoles.ADMIN);
+		// TODO currently each userBO is an admin. Fix this in later versions when you need a more granular role concept.
+		userBO.getRoles().add(BlogRoles.ADMIN);
 
-		userRepository.save(user);
+		userRepository.save(userBO);
 	}
 	
-	public void changePasswordOfUser(User user, String newPassword){
-		setPasswordWithRandomSaltForUser(user, newPassword);
-		userRepository.save(user);
+	public void changePasswordOfUser(UserBO userBO, String newPassword){
+		setPasswordWithRandomSaltForUser(userBO, newPassword);
+		userRepository.save(userBO);
 	}
 	
-	private void setPasswordWithRandomSaltForUser(User user, String newPassword){
+	private void setPasswordWithRandomSaltForUser(UserBO userBO, String newPassword){
 		final ByteSource salt = secureRandomNumberGenerator.nextBytes();
-		user.setPassword(new Sha512Hash(newPassword, salt).toHex()); // hex is default of the shiro credentials matcher.
-		user.setSalt(salt.getBytes());
+		userBO.setPassword(new Sha512Hash(newPassword, salt).toHex()); // hex is default of the shiro credentials matcher.
+		userBO.setSalt(salt.getBytes());
 	}
 }

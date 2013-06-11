@@ -1,19 +1,15 @@
 package de.metacoder.blog.pages.admin.users;
 
+import de.metacoder.blog.persistence.entities.UserBO;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.annotations.Inject;
-import org.tynamo.security.services.SecurityService;
 
-import de.metacoder.blog.persistence.entities.User;
 import de.metacoder.blog.persistence.repositories.UserRepository;
 import de.metacoder.blog.services.UserService;
 
 public class EditUser {
-
-	@Inject
-	SecurityService securityService;
 
 	@Inject
 	UserRepository userRepository;
@@ -21,7 +17,7 @@ public class EditUser {
 	String username;
 
 	@Property
-	User user;
+    UserBO userBO;
 
 	@Component
 	Form passwordChangeForm;
@@ -34,7 +30,7 @@ public class EditUser {
 
 	public void onActivate(final String username) {
 		this.username = username;
-		user = userRepository.findOne(username);
+		userBO = userRepository.findOne(username);
 	}
 
 	public String onPassivate() {
@@ -49,7 +45,7 @@ public class EditUser {
 	public Object onSuccessFromPasswordChangeForm() {
 		if (newPassword != null && newPassword.length() > 0) {
 			System.out.println("success from pw change form!");
-			userService.changePasswordOfUser(user, newPassword);
+			userService.changePasswordOfUser(userBO, newPassword);
 			return Index.class;
 		}
 		return null;

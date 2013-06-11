@@ -2,13 +2,6 @@
 	xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
 
 	<p>Login-Seite...</p>
-	<t:security.authenticated>
-		Hello, ${username}
-		<t:security.loginlink />
-	</t:security.authenticated>
-	<t:security.notAuthenticated>
-		<t:security.loginform />
-	</t:security.notAuthenticated>
 
 	<p:sidebar>
 	</p:sidebar>

@@ -1,7 +1,6 @@
 package de.metacoder.blog.services;
 
 import de.metacoder.blog.transferobjects.BlogEntryTO;
-import org.apache.shiro.web.mgt.WebSecurityManager;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.MappedConfiguration;
@@ -15,11 +14,9 @@ import java.util.UUID;
  */
 public class DevelopmentModule {
 
-	@Contribute(WebSecurityManager.class)
-	public static void resetAdminPassword(final Configuration<Object> configuration, final UserService userService, final BlogEntryService blogEntryService) {
+	/*public static void resetAdminPassword(final Configuration<Object> configuration, final UserService userService, final BlogEntryService blogEntryService) {
 		userService.createUser("dev-admin", "admin");
 
-        /* create 100 blog posts */
         for(int i = 0; i < 100; i++){
             BlogEntryTO blogEntryTo = new BlogEntryTO();
             blogEntryTo.setTitle("Test title " + i );
@@ -27,7 +24,7 @@ public class DevelopmentModule {
             blogEntryTo.setContent("das ist ein test blog entry eintrag (" + i + ") - " + UUID.randomUUID().toString());
             blogEntryService.createNewBlogEntry(blogEntryTo);
         }
-	}
+	} */
 
 	public static void contributeApplicationDefaults(
 			final MappedConfiguration<String, Object> configuration) {

@@ -2,10 +2,10 @@ package de.metacoder.blog.pages;
 
 import java.util.List;
 
+import de.metacoder.blog.persistence.entities.UserBO;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-import de.metacoder.blog.persistence.entities.User;
 import de.metacoder.blog.services.BlogEntryService;
 import de.metacoder.blog.transferobjects.BlogEntryTO;
 
@@ -25,7 +25,8 @@ public class Index {
 	@Property
 	BlogEntryTO blogEntry;
 	
-	@Property User author;
+	@Property
+    UserBO author;
 
 	private int pageId = 0;
 

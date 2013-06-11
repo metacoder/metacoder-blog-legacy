@@ -31,7 +31,7 @@ public class BlogEntry extends AbstractEntity {
 	private String content;
 
 	@ManyToOne
-	private User author;
+	private UserBO author;
 	
 	@OneToMany(orphanRemoval=true)
 	@Cascade(CascadeType.ALL)
@@ -62,11 +62,11 @@ public class BlogEntry extends AbstractEntity {
 		this.content = content;
 	}
 
-	public User getAuthor() {
+	public UserBO getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(User author) {
+	public void setAuthor(UserBO author) {
 		this.author = author;
 	}
 

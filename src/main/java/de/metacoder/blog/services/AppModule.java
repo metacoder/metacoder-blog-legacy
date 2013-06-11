@@ -1,17 +1,12 @@
 package de.metacoder.blog.services;
 
 import org.apache.shiro.realm.Realm;
-import org.apache.shiro.web.mgt.WebSecurityManager;
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.services.HttpServletRequestFilter;
-import org.tynamo.security.SecuritySymbols;
-import org.tynamo.security.services.SecurityFilterChainFactory;
-import org.tynamo.security.services.impl.SecurityFilterChain;
-import org.tynamo.security.shiro.authz.SslFilter;
 
 import de.metacoder.blog.security.BlogRoles;
 
@@ -22,28 +17,6 @@ import de.metacoder.blog.security.BlogRoles;
  */
 public class AppModule {
 
-	@Contribute(WebSecurityManager.class)
-	public static void addRealms(final Configuration<Realm> configuration,
-			final Realm configuredRealm) {
-		configuration.add(configuredRealm);
-	}
-	
-	@Contribute(HttpServletRequestFilter.class)
-	public static void setupSecurity(final Configuration<SecurityFilterChain> configuration, final SecurityFilterChainFactory factory, final WebSecurityManager securityManager) {
-		final SslFilter ssl = factory.ssl();
-		
-		if("development".equalsIgnoreCase(System.getProperty("tapestry.execution-mode"))){
-			ssl.setPort(8443); // TODO move to DevelopmentModule?
-		}
-		configuration.add(factory.createChain("/admin/**")
-				.add(factory.roles(), BlogRoles.ADMIN) // only admin role users are allowed to see the /admin/** area
-				.add(factory.authc()) // MUST be authenticated to avoid security flaws due to the remember me services
-				.add(ssl) //  require SSL
-				.build()); 
-		
-		configuration.add(factory.createChain("/login").add(ssl).build()); // SSL for the login page.
-		
-	}
 
     public void contributeIgnoredPathsFilter(Configuration<String> conf) {
         conf.add("/services/.*");
@@ -85,9 +58,5 @@ public class AppModule {
 		// match).
 		configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en");
 		configuration.add(SymbolConstants.SECURE_ENABLED, false);
-
-		/* custom shiro config */
-		configuration.add(SecuritySymbols.LOGIN_URL, "/login");
-		configuration.add(SecuritySymbols.UNAUTHORIZED_URL, "/unauthorized");
 	}
 }

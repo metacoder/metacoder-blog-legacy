@@ -6,11 +6,11 @@
 			<th>Rollen</th>
 			<th colspan="2" />
 		</tr>
-		<tr t:type="loop" source="userRepository.findAll()" value="user">
-			<td>${user.name}</td>
-			<td>${user.roles}</td>
-			<td><t:pagelink page="admin/users/edituser" context="user.name">Editieren</t:pagelink></td>
-			<td><t:actionlink t:id="delete" context="user.name">Löschen</t:actionlink></td>
+		<tr t:type="loop" source="userRepository.findAll()" value="userBO">
+			<td>${userBO.name}</td>
+			<td>${userBO.roles}</td>
+			<td><t:pagelink page="admin/users/edituser" context="userBO.name">Editieren</t:pagelink></td>
+			<td><t:actionlink t:id="delete" context="userBO.name">Löschen</t:actionlink></td>
 		</tr>
 	</table>
 </t:adminlayout>

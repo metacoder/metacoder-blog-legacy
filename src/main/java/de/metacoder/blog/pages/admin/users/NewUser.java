@@ -6,7 +6,7 @@ import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.corelib.components.PasswordField;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
-import de.metacoder.blog.persistence.entities.User;
+import de.metacoder.blog.persistence.entities.UserBO;
 import de.metacoder.blog.persistence.repositories.UserRepository;
 import de.metacoder.blog.services.UserService;
 
@@ -25,7 +25,7 @@ public class NewUser {
 	UserRepository userRepository;
 
 	@Property
-	User user;
+    UserBO userBO;
 
 	@Component
 	Form form;
@@ -34,8 +34,8 @@ public class NewUser {
 	UserService userService;
 
 	void onValidateFromForm() {
-		final User user = userRepository.findOne(userName);
-		if (user != null) {
+		final UserBO userBO = userRepository.findOne(userName);
+		if (userBO != null) {
 			form.recordError("Der gewählte Benutzername existiert bereits.");
 		}
 	}
