@@ -21,7 +21,7 @@ public class UserService {
 
 		final UserBO userBO = new UserBO();
 		userBO.setName(username);
-
+                                                                                                                        #
 		setPasswordWithRandomSaltForUser(userBO, password);
 		
 		// TODO currently each userBO is an admin. Fix this in later versions when you need a more granular role concept.
