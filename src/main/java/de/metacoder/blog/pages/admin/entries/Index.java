@@ -15,7 +15,5 @@ public class Index {
 	@Property
 	BlogEntryService blogEntryService;
 
-	public void onActionFromDelete(final Long blogEntryId) {
-		blogEntryService.deleteEntry(blogEntryId);
-	}
+
 }
