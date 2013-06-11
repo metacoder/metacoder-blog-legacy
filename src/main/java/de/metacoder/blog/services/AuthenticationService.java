@@ -47,7 +47,6 @@ public class AuthenticationService extends AbstractUserDetailsAuthenticationProv
 
     @Override
     protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
-        System.out.println("================================== >>>>>>>>>>>>>>> 0000000000000000000 additionalAuthenticationChecks!");
     }
 
     @Override
