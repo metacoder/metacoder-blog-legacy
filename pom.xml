@@ -67,7 +67,7 @@
 
 		<!-- Uncomment this to add support for file uploads: <dependency> <groupId>org.apache.tapestry</groupId> 
 			<artifactId>tapestry-upload</artifactId> <version>${tapestry-release-version}</version> 
-			</dependency> -->
+		</dependency> -->
 
 		<dependency>
 		    <groupId>net.sf.ehcache</groupId>
