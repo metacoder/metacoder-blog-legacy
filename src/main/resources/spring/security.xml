@@ -11,7 +11,7 @@
     <security:http use-expressions="true">
         <security:intercept-url pattern="/admin/**" access="isFullyAuthenticated()" requires-channel="https" />
         <security:intercept-url pattern="/services/**" access="isFullyAuthenticated()" requires-channel="https" />
-        <security:intercept-url pattern="/de/metacoder/blog/transferobjects" access="permitAll" />
+        <security:intercept-url pattern="/**" access="permitAll" />
         <security:form-login />
         <security:logout />
     </security:http>
