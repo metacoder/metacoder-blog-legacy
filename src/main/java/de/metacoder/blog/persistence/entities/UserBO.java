@@ -28,8 +28,8 @@ public class UserBO extends AbstractEntity {
 	@ElementCollection(fetch = FetchType.EAGER)
 	private Set<String> roles = new HashSet<String>();
 
-	@Column(length=16) // 16 bytes salt according to the default settings of the org.apache.shiro.crypto.SecureRandomNumberGenerator
-	private byte[] salt;
+	@Column(length=36) // length of UUID.toString, UUID.randomUUID() is used for dynamic salting
+	private String salt;
 
 	public String getName() {
 		return name;
@@ -55,11 +55,11 @@ public class UserBO extends AbstractEntity {
 		this.roles = roles;
 	}
 
-	public byte[] getSalt() {
+	public String getSalt() {
 		return salt;
 	}
 
-	public void setSalt(byte[] bs) {
-		this.salt = bs;
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 }

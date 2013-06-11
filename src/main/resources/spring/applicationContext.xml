@@ -18,26 +18,10 @@
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
     ">
 
-	<!-- <import resource="classpath:/configfiles/spring/profiles/foundationContextAllFeatures.xml"/>  -->
-
-
-
-    <security:http use-expressions="true">
-        <security:intercept-url pattern="/admin/**" access="isFullyAuthenticated()" requires-channel="https" />
-        <security:intercept-url pattern="/services/**" access="isFullyAuthenticated()" requires-channel="https" />
-        <security:intercept-url pattern="/**" access="permitAll" />
-        <security:form-login />
-        <security:logout />
-    </security:http>
-
-    <security:authentication-manager>
-        <security:authentication-provider ref="authenticationService" />
-    </security:authentication-manager>
-
+    <import resource="security.xml" />
 
 	<context:component-scan base-package="de.metacoder.blog" />
-	
-	
+
 	<cache:annotation-driven />
 	
 	<bean id="mbeanServer" class="org.springframework.jmx.support.MBeanServerFactoryBean">

@@ -1,13 +1,13 @@
 package de.metacoder.blog.pages.admin.users;
 
 import de.metacoder.blog.persistence.entities.UserBO;
+import de.metacoder.blog.security.DynamicSaltedUserDetailsService;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.annotations.Inject;
 
 import de.metacoder.blog.persistence.repositories.UserRepository;
-import de.metacoder.blog.services.UserService;
 
 public class EditUser {
 
@@ -26,7 +26,7 @@ public class EditUser {
 	String newPassword;
 
 	@Inject
-	UserService userService;
+    DynamicSaltedUserDetailsService userService;
 
 	public void onActivate(final String username) {
 		this.username = username;
