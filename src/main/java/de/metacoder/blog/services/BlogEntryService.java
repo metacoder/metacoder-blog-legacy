@@ -12,6 +12,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -104,7 +106,8 @@ public class BlogEntryService {
 
 	@Transactional
 	@CacheEvict(value={Caches.BLOG_ENTRY_TOS, Caches.GLOBAL_PAGE_CACHE}, allEntries=true)
-    @RequestMapping("/delete")
+    @RequestMapping(value="/delete", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
 	public void deleteEntry(Long id) {
         blogEntryRepository.delete(id);
 	}

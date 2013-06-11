@@ -17,11 +17,11 @@ function OverviewCtrl($scope, $http){
 
             $scope.numrows = data;
 
-
-            $http.get('/services/blogEntryService/entries?pageSize='+data+'&pageNumber=0').success(function(data){
-                $scope.entryList = data;
-            }).error(genericAjaxErrorHandler);
-
+            if(data > 0){
+                $http.get('/services/blogEntryService/entries?pageSize='+data+'&pageNumber=0').success(function(data){
+                    $scope.entryList = data;
+                }).error(genericAjaxErrorHandler);
+            }
         }).error(genericAjaxErrorHandler);
 
     };
@@ -30,8 +30,7 @@ function OverviewCtrl($scope, $http){
 
     $scope.deletePost = function(number){
         if(confirm("Beitrag " + number + " wirklich loeschen?")){
-            $http.get("/services/blogEntryService/delete?id="+number);
-            loadList();
+            $http.delete("/services/blogEntryService/delete?id="+number).success(loadList).error(genericAjaxErrorHandler);
         }
     }
 
