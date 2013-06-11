@@ -66,7 +66,7 @@ public class Layout {
 	public Set<String> getPageNames() {
 		Set<String> pages = new HashSet<String>(Arrays.asList(new String[] { "Index", "About", "Contact" }));
 
-        if(SecurityContextHolder.getContext().getAuthentication() != null && SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(BlogRoles.ADMIN)){
+        if(SecurityContextHolder.getContext().getAuthentication() != null){
             pages.add("Admin");
         }
 

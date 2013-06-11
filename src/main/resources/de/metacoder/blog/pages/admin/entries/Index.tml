@@ -2,8 +2,6 @@
 
     <div ng-controller="OverviewCtrl">
 
-    {{greeting}}
-
     Einträge: {{numrows}}
 
     <table class="table table-striped table-bordered">
@@ -21,7 +19,7 @@
                 <td>{{entry.title}}</td>
                 <td>{{entry.creationDate | date:'medium'}}</td>
                 <td><a href="/admin/entries/editentry/{{entry.id}}">Bearbeiten</a></td>
-                <td><a href="/admin/entries/index.delete/{{entry.id}}">Löschen</a></td>
+                <td><a href="#" ng-click="deletePost(entry.id)">Löschen</a></td>
             </tr>
         </tbody>
     </table>

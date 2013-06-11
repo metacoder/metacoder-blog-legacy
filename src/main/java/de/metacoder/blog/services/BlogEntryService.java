@@ -27,7 +27,7 @@ import java.util.List;
 @Service
 @Cacheable(Caches.BLOG_ENTRY_TOS)
 @Controller
-//@Transactional // todo check if tx is opened when cache contains value
+@RequestMapping("/blogEntryService")
 public class BlogEntryService {
 
 	@Autowired
@@ -104,8 +104,9 @@ public class BlogEntryService {
 
 	@Transactional
 	@CacheEvict(value={Caches.BLOG_ENTRY_TOS, Caches.GLOBAL_PAGE_CACHE}, allEntries=true)
-	public void deleteEntry(Long blogEntryId) {
-        blogEntryRepository.delete(blogEntryId);
+    @RequestMapping("/delete")
+	public void deleteEntry(Long id) {
+        blogEntryRepository.delete(id);
 	}
 	
 }

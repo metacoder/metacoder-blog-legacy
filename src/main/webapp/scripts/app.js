@@ -10,20 +10,29 @@ function genericAjaxErrorHandler(data, status, headers, config){
     alert('error!' + data + " " + status + " " + headers + " " + config);
 }
 function OverviewCtrl($scope, $http){
-    $scope.greeting = "Hello Felix!";
 
-    $http.get('/services/numRows').success(function(data, status, headers, config) {
+    loadList = function() {
 
-        $scope.numrows = data;
+        $http.get('/services/blogEntryService/numRows').success(function(data, status, headers, config) {
+
+            $scope.numrows = data;
 
 
-        $http.get('/services/entries?pageSize='+data+'&pageNumber=0').success(function(data){
-            $scope.entryList = data;
+            $http.get('/services/blogEntryService/entries?pageSize='+data+'&pageNumber=0').success(function(data){
+                $scope.entryList = data;
+            }).error(genericAjaxErrorHandler);
+
         }).error(genericAjaxErrorHandler);
 
-    }).error(genericAjaxErrorHandler);
+    };
 
+    loadList();
 
-
+    $scope.deletePost = function(number){
+        if(confirm("Beitrag " + number + " wirklich loeschen?")){
+            $http.get("/services/blogEntryService/delete?id="+number);
+            loadList();
+        }
+    }
 
 }
