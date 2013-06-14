@@ -1,0 +1,17 @@
+<h3 ng-show="username">Benutzer {{username}} editieren</h3>
+<h3 ng-hide="username">Benutzer erstellen</h3>
+
+<div ng-show="username">
+<h4>Neues Passwort setzen</h4>
+<label for="password">Passwort: </label>
+<input type="password" placeholder="New password" ng-model="password" />
+<button class="btn btn-success" ng-click="savePassword()">Neues Passwort speichern</button>
+</div>
+
+<div ng-hide="username">
+<label for="newusername">Benutzername: </label>
+<input type="text" id="newusername" ng-model="newusername" placeholder="Benutzername" />
+<label for="password">Passwort: </label>
+<input type="password" id="newuserpassword" ng-model="newuserpassword" placeholder="Passwort" />
+<button class="btn btn-success" ng-click="createNewUser()">Benutzer erstellen</button>
+</div>

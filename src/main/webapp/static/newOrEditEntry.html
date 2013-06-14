@@ -1,0 +1,15 @@
+<h3 ng-hide="blogEntry.id">Eintrag erstellen</h3>
+<h3 ng-show="blogEntry.id">Eintrag "{{blogEntry.title}}" (ID: {{blogEntry.id}}) bearbeiten</h3>
+
+<div class="form-horizontal">
+
+    <p>
+        <input type="text" ng-model="blogEntry.title" placeholder="Titel" style="width:100%;"  />
+    </p>
+    <p>
+        <textarea id="content" ng-model="blogEntry.content" style="width: 100%; height: 300px;" placeholder="Inhalt"></textarea>
+    </p>
+    <p>
+        <button ng-click="save()" class="btn btn-success">Speichern</button>
+    </p>
+</div>

@@ -22,7 +22,7 @@ public class DevelopmentModule {
             blogEntryTo.setTitle("Test title " + i );
             blogEntryTo.setAuthor("dev-admin");
             blogEntryTo.setContent("das ist ein test blog entry eintrag (" + i + ") - " + UUID.randomUUID().toString());
-            blogEntryService.createNewBlogEntry(blogEntryTo);
+            blogEntryService.createOrUpdateBlogEntry(blogEntryTo);
         }
 	} */
 

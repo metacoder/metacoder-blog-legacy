@@ -51,6 +51,10 @@ public class Layout {
 	@Parameter(defaultPrefix = BindingConstants.LITERAL)
 	private Block sidebar;
 
+    @Property
+    @Parameter(defaultPrefix =  BindingConstants.LITERAL)
+    private Block overrideContentArea;
+
 	@Inject
 	private ComponentResources resources;
 

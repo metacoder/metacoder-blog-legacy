@@ -1,5 +1,0 @@
-<t:adminlayout xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
-
-<p>In der Seitenleiste finden Sie ein Adminmenü mit allen tollen Dingen die Sie als Admin machen können, yeah!</p>
-
-</t:adminlayout>

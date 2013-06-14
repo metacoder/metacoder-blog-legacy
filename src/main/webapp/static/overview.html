@@ -1,0 +1,25 @@
+<div>
+
+<h3>Beitragsübersicht</h3>
+<h4>Anzahl der Beiträge: {{numrows}}</h4>
+<table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Titel</th>
+        <th>Erstellungsdatum</th>
+        <th colspan="2" />
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="entry in entryList">
+        <td>{{entry.id}}</td>
+        <td>{{entry.title}}</td>
+        <td>{{entry.creationDate | date:'medium'}}</td>
+        <td><a href="/admin/entries/editentry/{{entry.id}}">Bearbeiten</a></td>
+        <td><a href="#" ng-click="deletePost(entry.id)">Löschen</a></td>
+    </tr>
+    </tbody>
+
+</table>
+</div>

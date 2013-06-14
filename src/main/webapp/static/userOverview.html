@@ -1,0 +1,26 @@
+<div>
+
+<h3>Benutzerübersicht</h3>
+<table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th>Benutzer</th>
+        <th>Rollen</th>
+        <th colspan="2" />
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="user in userList">
+        <td>{{user.name}}</td>
+        <td>
+            <ul style="margin:0px; list-style: none;">
+                <li ng-repeat="role in user.roles">{{role}}</li>
+            </ul>
+        </td>
+        <td><a href="/admin/users/edit/{{user.name}}">Bearbeiten</a></td>
+        <td><a href="#" ng-click="deletePost(entry.id)">Löschen</a></td>
+    </tr>
+    </tbody>
+
+</table>
+</div>

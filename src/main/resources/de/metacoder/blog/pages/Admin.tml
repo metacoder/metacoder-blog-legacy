@@ -1,0 +1,29 @@
+<t:layout title="Admin"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <p:overrideContentArea>
+
+        <div class="row" ng-app="metacoderAdmin" ng-controller="AdminCtrl">
+
+            <div class="span7 container" ng-view=""></div>
+
+            <ul class="nav nav-list span2">
+                <li class="nav-header"><i class="icon-list" /> Beitragsverwaltung</li>
+                <li><a href="/admin/entries">Übersicht</a></li>
+                <li>
+                    <a href="/admin/entries/newentry">Beitrag erstellen</a>
+                </li>
+                <li class="nav-header"><i class="icon-user"/> Benutzerverwaltung</li>
+                <li>
+                    <a href="/admin/users">Übersicht</a>
+                </li>
+                <li>
+                    <a href="/admin/users/create">Benutzer erstellen</a>
+                </li>
+            </ul>
+        </div>
+
+    </p:overrideContentArea>
+
+</t:layout>

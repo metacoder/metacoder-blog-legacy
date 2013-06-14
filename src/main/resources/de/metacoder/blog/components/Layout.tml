@@ -29,39 +29,47 @@
 			</div>
 		</div>
 		<!-- end header -->
-		<!-- start page -->
-		<div id="main">
-			<div id="main_inner" class="fixed">
-				<!-- start content -->
-				<div id="primaryContent">
-					<div id="mainContent">
-						<div class="title">
-							<h3>${title}</h3>
-						</div>
-						<div class="entry">
-							<t:body />
-						</div>
-					</div>
-				</div>
-				<!-- end content -->
-				<!-- start sidebar -->
-				<div id="secondaryContent">
-					<div id="sidebar">
-						<t:if test="sidebar">
-							<t:delegate to="sidebar" />
-							<p:else> <!-- show default sidebar -->
-								<h4><span>Friends</span> of Eclipse</h4>
-								<div class="sidebar-content">
-									<a href="http://www.eclipse.org/donate/"><img src="${context:images/friendslogo.jpg}"/></a>
-								</div>
-							</p:else>
-						</t:if>
-					</div>
-				</div>
-				<!-- end sidebar -->
-				<br class="clear" />
-			</div>
-		</div>
+
+        <div id="main">
+            <div id="main_inner" class="fixed">
+                <t:if test="overrideContentArea">
+                    <t:delegate to="overrideContentArea" />
+                    <p:else>
+                    <!-- start page -->
+
+                            <!-- start content -->
+                            <div id="primaryContent">
+                                <div id="mainContent">
+                                    <div class="title">
+                                        <h3>${title}</h3>
+                                    </div>
+                                    <div class="entry">
+                                        <t:body />
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end content -->
+                            <!-- start sidebar -->
+                            <div id="secondaryContent">
+                                <div id="sidebar">
+                                    <t:if test="sidebar">
+                                        <t:delegate to="sidebar" />
+                                        <p:else> <!-- show default sidebar -->
+                                            <h4><span>Friends</span> of Eclipse</h4>
+                                            <div class="sidebar-content">
+                                                <a href="http://www.eclipse.org/donate/"><img src="${context:images/friendslogo.jpg}"/></a>
+                                            </div>
+                                        </p:else>
+                                    </t:if>
+                                </div>
+                            </div>
+                            <!-- end sidebar -->
+                            <br class="clear" />
+                    </p:else>
+                </t:if>
+            </div>
+        </div>
+
 		<!-- end page -->
 		<!-- start footer -->
 		<div id="footer" class="fixed">

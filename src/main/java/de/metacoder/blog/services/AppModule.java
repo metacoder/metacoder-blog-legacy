@@ -19,6 +19,7 @@ public class AppModule {
 
     public void contributeIgnoredPathsFilter(Configuration<String> conf) {
         conf.add("/services/.*");
+        conf.add("/static/.*");
     }
 
 
