@@ -23,6 +23,11 @@
 	</context-param>
 	
 	<filter>
+		<filter-name>april</filter-name>
+		<filter-class>de.metacoder.blog.AprilFirstFilter</filter-class>
+	</filter>
+	
+	<filter>
 		<filter-name>app</filter-name>
 		<filter-class>org.apache.tapestry5.spring.TapestrySpringFilter</filter-class>
 	</filter>
@@ -44,7 +49,12 @@
     </filter>
 
     <!-- it's required to load the oemInViewFilter BEFORE the tapestry filter! -->
-
+	
+	<filter-mapping>
+		<filter-name>april</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
     <filter-mapping>
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
