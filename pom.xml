@@ -244,7 +244,7 @@
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<version>1.1</version>
 				<configuration>
-					<url>http://metacoder.de:8180/manager/text</url>
+					<url>http://metacoder.de:8080/manager/text</url>
 					<server>tomcat.coding4coffee.org</server>
 					<path>/</path>
 				</configuration>
