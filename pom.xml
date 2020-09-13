@@ -333,7 +333,7 @@
 		<testng-release-version>5.14.9</testng-release-version>
 		<easymock-release-version>3.0</easymock-release-version>
 
-		<spring.version>3.2.0.RELEASE</spring.version>
+		<spring.version>5.2.8.RELEASE</spring.version>
 		<hibernate.version>4.1.8.Final</hibernate.version>
 
 		<jetty.version>8.1.8.v20121106</jetty.version>
